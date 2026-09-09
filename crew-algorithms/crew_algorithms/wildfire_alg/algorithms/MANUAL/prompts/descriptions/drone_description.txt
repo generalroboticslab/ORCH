@@ -1,0 +1,2 @@
+            - Move in the the direction of a target coordinate location, observing along the way.
+            - Do nothing, remaining on standby and conserving energy.

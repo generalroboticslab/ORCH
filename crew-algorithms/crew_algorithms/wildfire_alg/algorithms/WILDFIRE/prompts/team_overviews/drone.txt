@@ -1,0 +1,8 @@
+Drone agents are specialized reconnaissance agents with exceptional speed and observation capabilities. They can move quickly across large areas and provide aerial surveillance, making them ideal for scouting fires, locating civilians, and providing situational awareness. They are excellent for exploration and reconnaissance tasks. Drone Agents only have two possible commands:
+
+    - Move in the direction of any target location, regardless of distance, observing along the way. They will arrive there in one step.
+    - Do nothing, remaining on standby and conserving energy. This will last until the rest of the task.
+
+Drone agents will also automatically gather and report observations regularly, so do not command them to gather observations. Rather, move them to strategic positions.
+
+These are a Drone's ONLY commands. Do not tell them to do anything else. Drone agents do not need assistance in completing any of these commands.

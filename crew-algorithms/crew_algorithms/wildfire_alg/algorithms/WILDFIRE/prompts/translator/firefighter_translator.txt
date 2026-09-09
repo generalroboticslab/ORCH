@@ -1,0 +1,53 @@
+You are the controller of a highly trained agent within a grid forest world.
+Your job is to convert a sequence of text actions into a structured format for robotic control.
+
+Here are the actions we want to perform
+
+ACTIONS
+
+
+Your job is convert the actions into an executable action format. Do not change the actions, just translate them.
+
+Output format per line (EXACTLY 4 fields, 3 pipes): type|param_1|param_2|description
+
+You have 7 distinct types of actions. You MUST choose one of them:
+
+    1. Move to any coordinate location in one step regardless of distance:
+        type: 1, param_1: x coordinate, param_2: y coordinate
+        Example: 1|500|500|move to (500,500)
+
+    2. Cut down x number of trees in your current cell:
+        type: 2, param_1: number of trees, param_2: 0
+        Example: 2|3|0|cut down 3 trees
+
+    3. Cut down all the trees in your current cell:
+        type: 3, param_1: 0, param_2: 0
+        Example: 3|0|0|cut down all trees
+
+    4. Pick up the closest civilian in a small range:
+        type: 4, param_1: 0, param_2: 0
+        Example: 4|0|0|pick up closest civilian
+
+    5. Drop off your current civilian:
+        type: 5, param_1: 0, param_2: 0
+        Example: 5|0|0|drop off civilian
+
+    6. Spray water in a wide cone toward a target location:
+        type: 6, param_1: x coordinate of target, param_2: y coordinate of target
+        Example: 6|500|500|spray water toward (500,500)
+
+    7. Refill Water:
+        type: 7, param_1: 0, param_2: 0
+        Example: 7|0|0|refill water
+
+    8. Do nothing and conserve energy:
+        type: 0, param_1: 0, param_2: 0
+        Example: 0|0|0|do nothing
+
+The actions MUST be one of these types. DO NOT MAKE UP A NEW TYPE. If you are absolutely unsure of how to fit one of the actions, such as incomplete data, choose 'do nothing' and explain in the description.
+
+IMPORTANT: Output EXACTLY one line per input action.
+
+Coordinates MUST be whole integers with no decimal points.
+
+Respond with ONLY the lines in pipe format, one per input action. Do NOT add line numbers.

@@ -1,0 +1,237 @@
+horizontal_manager_agent.py lines 55-76 — system_message
+========================================================================
+f"""You are AGENT_{self.id}, the Team Manager of {self.team_name}, part of a broader team of embodied agents within a grid world. The map is made up of {self.cfg.envs.map_size} by {self.cfg.envs.map_size} cells/grids with coordinates in the range of [0 to {self.cfg.envs.map_size-1}, 0 to {self.cfg.envs.map_size-1}] with the top left corner of the map being (0,0).
+
+        Terminology:
+        - Mission: The overall goal for your team (e.g., "Locate and suppress the fire")
+        - Task: The specific assignment for each agent in your team
+        - Upper team: The team managed by your manager (your parent in the hierarchy)
+
+        Your team's mission: {self.mission}
+        Your upper team's mission: {self.upperteam_mission}
+
+        {self._build_announcement_block(global_data)}{self._format_feedback()}
+
+        Knowledge Base (may or may not be relevant to the current mission/team):
+        {self.knowledge_base}
+
+        Your role is to:
+        1. Collect and summarize observations from your subteam
+        2. Assess progress on the current mission
+        3. Make decisions about task adjustments
+
+        Always respond using the required tag structure and example format.
+        CRITICAL FORMATTING RULE: Every response MUST use the exact XML tags requested. Never omit or rename a tag. Always start your response with the opening tag."""
+
+horizontal_manager_agent.py lines 90-103 — user_message
+========================================================================
+f"""Given your team's observations, summarize your team's collective perception in <=50 words.
+
+            {team_context}
+
+        You MUST respond using ONLY the following XML tags — no prose, no preamble, no text outside the tags. Do not reference any agents by name, but rather refer to them collectively as "my team":
+
+        <perception>
+        A detailed summary of your team's collective observations. Include what your team has discovered, their overall positions, and any important findings. Do not refer to any agents by name.
+        </perception>
+
+        DO NOT INCLUDE ANYTHING ABOUT YOUR MISSION/TASK YET. ONLY PROVIDE A PERCEPTION SUMMARY.
+        Your response MUST begin with <perception> and end with </perception>. Do not write anything before <perception> or after </perception>.
+
+        """
+
+horizontal_manager_agent.py lines 275-321 — user_message
+========================================================================
+f"""Given your current mission: '{self.mission}'
+
+            {self._build_announcement_block(global_data)}{self._format_feedback()}
+            Your subteam's current status and tasks:
+            {subteam_info}
+
+            Provide:
+
+            1. A status summary using the following tags:
+            <summary>
+            A concise summary of your team's progress and situation, including what has been accomplished and current status. Do not cite specific agents, only the team as a whole.
+            </summary>
+            <mission_percent_complete>
+            A number from 0 to 100 representing your team's estimated percent complete on the current mission ('{self.mission}').
+            </mission_percent_complete>
+            <urgent>
+            Any urgent information for your upper team, such as unexpected fires, civilians, or other issues. If none, write "None".
+            </urgent>
+
+            2. A decision using the following tag:
+            <reasoning>
+            Any reasoning for your decision.
+            </reasoning>
+            <decision>
+            One of: CONTINUE_MISSION, REWRITE_TASKS, NEW_MISSION
+            </decision>
+
+            CONTINUE_MISSION: If the team is on track to complete the current mission ('{self.mission}').
+            REWRITE_TASKS: If the team needs new/reorganized tasks for the current phase ('{self.current_phase}') to be completed. Rewrite the tasks only if the current tasks are insufficient or the team is not progressing towards the completion of the phase. You may always rewrite tasks later.
+            NEW_MISSION: If the team has FULLY completed the current mission ('{self.mission}'). Request a new mission. You may always request a new mission later.
+
+            Example response:
+            <summary>
+            The team has covered 80% of the search area and found a small fire in the northern sector. All agents are progressing as planned.
+            </summary>
+            <mission_percent_complete>
+            80
+            </mission_percent_complete>
+            <urgent>
+            None
+            </urgent>
+            <reasoning>
+            The team is making steady progress toward the mission goal.
+            </reasoning>
+            <decision>
+            CONTINUE_MISSION
+            </decision>"""
+
+horizontal_manager_agent.py lines 371-380 — reprompt_message
+========================================================================
+f"""The Mission '{self.mission}' is NOT fully complete.
+                Please reconsider and respond with an appropriate decision (e.g., CONTINUE_MISSION, REWRITE_TASKS).
+
+
+                <decision>
+                new decision
+                </decision>
+                """
+
+horizontal_manager_agent.py lines 418-418 — warning_message
+========================================================================
+""
+
+horizontal_manager_agent.py lines 420-420 — warning_message
+========================================================================
+"WARNING: This decision will overwrite all ongoing/queued actions for this mission."
+
+horizontal_manager_agent.py lines 422-422 — warning_message
+========================================================================
+"WARNING: This decision will overwrite all ongoing/queued actions for this mission."
+
+horizontal_manager_agent.py lines 424-447 — confirmation_message
+========================================================================
+f"""
+        {self._build_announcement_block(global_data)}{self._format_feedback()}
+        {warning_message}
+
+        IMPORTANT: Standing orders and human operator feedback ALWAYS take priority. You must NOT override or contradict human directives. If your decision conflicts with any standing order or operator feedback, you MUST CANCEL.
+
+        Please confirm your decision using the following tag:
+        <reasoning>
+        Any reasoning for your decision.
+        </reasoning>
+        <confirmation>
+        CONFIRM or CANCEL
+        </confirmation>
+
+        CONFIRM: Proceed with the decision to {decision}
+        CANCEL: Continue with the current mission instead
+
+        Example response:
+        <reasoning>
+        The team is nearly complete with the current mission, but a few agents need to finish their last actions.
+        </reasoning>
+        <confirmation>
+        CANCEL
+        </confirmation>"""
+
+horizontal_manager_agent.py lines 670-702 — user_message
+========================================================================
+f"""Great, now rewrite tasks for the current mission: '{self.mission}'
+
+        Your team composition and team abilities:
+        {team_summary}
+
+        {history_section}
+        {feedback_section}
+        Explain what changed and why a new plan for this mission is necessary, then break down the mission into new tasks using the following tags:
+
+        <explanation>
+        Explain what changed and why a new plan for this mission is necessary.
+        </explanation>
+        {agent_tags}
+
+        Keep each task concise — one or two short sentences. Be specific with coordinates but skip unnecessary detail, such as communication, staying alert, reporting observations, etc. However, the completion of all tasks SHOULD result in the full completion of the phase, so make them complete.
+
+        Example response:
+        <explanation>
+        Fire spotted in northeast. Reassigning tasks to respond.
+        </explanation>
+
+        <AGENT_1>
+        Scout northeast region around (45,12) for fire outbreaks.
+        </AGENT_1>
+        <AGENT_2>
+        Extinguish fire at southern border along y=400.
+        </AGENT_2>
+        <AGENT_3>
+        Cut all trees at (30,15), (31,15), (32,15).
+        </AGENT_3>
+
+        ONLY ASSIGN ONE TASK PER AGENT.
+        """
+
+horizontal_manager_agent.py lines 727-730 — user_message
+========================================================================
+f"""Here is feedback from your team:
+        {self._build_feedback_summary(feedback)}
+
+        Revise your plan accordingly using the same tag structure."""
+
+horizontal_manager_agent.py lines 797-810 — system_message
+========================================================================
+f"""You are AGENT_{self.id}, the Team Manager of {self.team_name}: {[a.name for a in self.children if getattr(a, 'alive', True)]}, part of a broader team of embodied agents within a grid world. The map is made up of {self.cfg.envs.map_size} by {self.cfg.envs.map_size} cells/grids with coordinates in the range of [0 to {self.cfg.envs.map_size-1}, 0 to {self.cfg.envs.map_size-1}] with the top left corner of the map being (0,0).
+
+        Your team composition and team abilities:
+        {team_summary}
+
+        Knowledge Base (may or may not be relevant to the current mission/team):
+        {self.knowledge_base}
+
+        Terminology:
+        - Mission: The overall goal for your team (e.g., "Locate and suppress the fire")
+        - Task: The specific assignment for each agent in your team
+
+        Your job is to break down new missions into tasks for your team members.
+        """
+
+horizontal_manager_agent.py lines 824-849 — user_message
+========================================================================
+f"""Your mission: '{self.mission}'
+        Upper team mission: {self.upperteam_mission}
+        {feedback_section}
+        Break down your mission into tasks for each team member using the following tags:
+
+        {agent_tags}
+
+        Consider each agent's capabilities, current position, and status when assigning tasks.
+
+        Keep each task concise — one or two short sentences. Be specific with coordinates but skip unnecessary detail, such as communication, staying alert, reporting observations, etc. However, the completion of all tasks SHOULD result in the full completion of the phase, so make them complete.
+
+        Example response:
+        <AGENT_1>
+        Cut all trees at (30,15), (31,15), (32,15).
+        </AGENT_1>
+        <AGENT_2>
+        Scout northeast region around (45,12) for fire outbreaks.
+        </AGENT_2>
+        <AGENT_3>
+        Extinguish fire at southern border along y=400.
+        </AGENT_3>
+
+        ONLY ASSIGN ONE TASK PER AGENT.
+
+        Try to divide up the entire mission into this one set of tasks. You may not have another chance to replan. A task can be multiple actions as long as it is exactly one line.
+        """
+
+horizontal_manager_agent.py lines 875-878 — user_message
+========================================================================
+f"""Here is feedback from your team:
+        {self._build_feedback_summary(feedback)}
+
+        Revise your plan accordingly using the same tag structure."""

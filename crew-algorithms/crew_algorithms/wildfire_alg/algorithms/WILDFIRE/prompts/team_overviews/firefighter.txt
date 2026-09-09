@@ -1,0 +1,12 @@
+Firefighter agents are general-purpose agents with decent speed and observation capabilities. They can move to any location, cut down trees, carry civilians, and use water to extinguish fires. They are versatile and can handle most wildfire management tasks effectively. Firefighter agents have five possible commands:
+
+    - Move to any coordinate location. Distance does not matter, they will reach that location in one move.
+    - Cut down some or all trees within a cell.
+    - Pick up or drop off a nearby civilian
+    - Spray 1 water in a cone aiming at any coordinate location at a limited range.
+    - Refill water. They must be on a water source.
+    - Do nothing, remaining on standby and conserving energy. This will last until the rest of the task.
+
+Firefighter agents will also automatically gather and report observations regularly, so do not command them to gather observations. Rather, move them to strategic positions.
+
+These are a Firefighter's ONLY commands. Do not tell them to do anything else. Firefighter agents do not need assistance in completing any of these commands.

@@ -1,0 +1,411 @@
+agent.py lines 185-185 — child_message
+========================================================================
+f"AGENT_{self.id} of {self.team_name} reporting status."
+
+agent.py lines 366-391 — system_message
+========================================================================
+f"""You are AGENT_{self.id}, the Team Manager of {self.team_name}, part of a broader team of embodied agents within a grid world. The map is made up of {self.cfg.envs.map_size} by {self.cfg.envs.map_size} cells/grids with coordinates in the range of [0 to {self.cfg.envs.map_size-1}, 0 to {self.cfg.envs.map_size-1}] with the top left corner of the map being (0,0).
+
+        Terminology:
+        - Mission: The overall goal for your team (e.g., "Locate and suppress the fire")
+        - Phase: A major step toward the mission (e.g., "Scout for the fire", "Build firebreaks") 
+        - Task: The specific assignment for each agent in your team for the current phase
+        - Upper team: The team managed by your manager (your parent in the hierarchy)
+
+        Your team's mission: {self.mission}
+        Your team's current phase: {self.current_phase}
+        Your team's phase progress: {self.phase_progress}%
+        Your upper team's phase: {self.upperteam_phase}
+        Your upper team's mission: {self.upperteam_mission}
+
+        {self._build_announcement_block(global_data)}{self._format_feedback()}
+
+        Knowledge Base (may or may not be relevant to the current mission/team):
+        {self.knowledge_base}
+
+        Your role is to:
+        1. Collect and summarize observations from your subteam
+        2. Assess progress on current phase and overall mission
+        3. Make decisions about phase transitions and task adjustments
+
+        Always respond using the required tag structure and example format.
+        CRITICAL FORMATTING RULE: Every response MUST use the exact XML tags requested. Never omit or rename a tag. Always start your response with the opening tag."""
+
+agent.py lines 405-418 — user_message
+========================================================================
+f"""Given your team's observations, summarize your team's collective perception in <=50 words.
+
+            {team_context}
+
+        You MUST respond using ONLY the following XML tags — no prose, no preamble, no text outside the tags. Do not reference any agents by name, but rather refer to them collectively as "my team":
+
+        <perception>
+        A concise detailed summary of your team's collective observations. Include what your team has discovered, their overall positions, and any important findings. Do not refer to any agents by name.
+        </perception>
+
+        DO NOT INCLUDE ANYTHING ABOUT YOUR MISSION/TASK YET. ONLY PROVIDE A PERCEPTION SUMMARY.
+        Your response MUST begin with <perception> and end with </perception>. Do not write anything before <perception> or after </perception>.
+
+        """
+
+agent.py lines 616-670 — user_message
+========================================================================
+f"""Given your current mission: '{self.mission}'
+
+            Your timeline: Past Phases: {self.phase_history}, Current Phase: '{self.current_phase}', Future Phases: {self.future_phases}
+
+            Your current phase's completion condition: {self.phase_completion_condition}
+
+            {self._build_announcement_block(global_data)}{self._format_feedback()}
+            Your subteam's current status and tasks:
+            {subteam_info}
+
+            Provide:
+
+            1. A status summary using the following tags:
+            <summary>
+            A concise summary of your team's progress and situation, including what has been accomplished and current status. Do not cite specific agents, only the team as a whole.
+            </summary>
+            <phase_percent_complete>
+            A number from 0 to 100 representing your team's estimated percent complete on the current phase ('{self.current_phase}').
+            </phase_percent_complete>
+            <mission_percent_complete>
+            A number from 0 to 100 representing your team's estimated percent complete on the current mission ('{self.mission}').
+            </mission_percent_complete>
+            <urgent>
+            Any urgent information for your upper team, such as unexpected fires, civilians, or other issues. If none, write "None".
+            </urgent>
+
+            2. A decision using the following tag:
+            <reasoning>
+            Concise reasoning for your decision.
+            </reasoning>
+            <decision>
+            One of: {decision_options}
+            </decision>
+
+            {decision_descriptions}
+
+            Example response:
+            <summary>
+            {example_summary}
+            </summary>
+            <phase_percent_complete>
+            {example_pct}
+            </phase_percent_complete>
+            <mission_percent_complete>
+            20
+            </mission_percent_complete>
+            <urgent>
+            None
+            </urgent>
+            <reasoning>
+            The team has completed all planned phases but the fire is not fully contained. Additional work is needed.
+            </reasoning>
+            <decision>
+            {example_decision}
+            </decision>"""
+
+agent.py lines 702-711 — reprompt_message
+========================================================================
+f"""The Mission '{self.mission}' is NOT fully complete. 
+                Please reconsider and respond with an appropriate decision (e.g., CONTINUE_PHASE, NEXT_PHASE, etc.).
+                
+                
+                <decision>
+                new decision
+                </decision>
+                """
+
+agent.py lines 806-806 — warning_message
+========================================================================
+""
+
+agent.py lines 808-808 — warning_message
+========================================================================
+"WARNING: This decision will overwrite all ongoing/queued actions for this phase."
+
+agent.py lines 810-810 — warning_message
+========================================================================
+"WARNING: This decision will overwrite all ongoing/queued actions for this phase."
+
+agent.py lines 812-812 — warning_message
+========================================================================
+"WARNING: This decision will overwrite all ongoing/queued actions for this phase."
+
+agent.py lines 814-814 — warning_message
+========================================================================
+"WARNING: This decision will overwrite all ongoing/queued actions and phases for this mission."
+
+agent.py lines 816-839 — confirmation_message
+========================================================================
+f"""
+        {self._build_announcement_block(global_data)}{self._format_feedback()}
+        {warning_message}
+
+        IMPORTANT: Standing orders and human operator feedback ALWAYS take priority. You must NOT override or contradict human directives. If your decision conflicts with any standing order or operator feedback, you MUST CANCEL.
+
+        Please confirm your decision using the following tag:
+        <reasoning>
+        Any reasoning for your decision.
+        </reasoning>
+        <confirmation>
+        CONFIRM or CANCEL
+        </confirmation>
+
+        CONFIRM: Proceed with the decision to {decision}
+        CANCEL: Continue with the current phase instead
+
+        Example response:
+        <reasoning>
+        The team is nearly complete with the current mission, but a few agents need to finish their last actions.
+        </reasoning>
+        <confirmation>
+        CANCEL
+        </confirmation>"""
+
+agent.py lines 1323-1323 — child_system_prompt
+========================================================================
+f"You are AGENT_{agent.id}, a team manager. Provide feedback on team plans."
+
+agent.py lines 1325-1325 — child_system_prompt
+========================================================================
+f"You are AGENT_{agent.id}, a {agent_type} agent. Provide feedback on team plans."
+
+agent.py lines 1377-1397 — feedback_message
+========================================================================
+f"""
+            You are a member of a team structure {[i.name for i in self.children]}, including yourself: {agent.name}.
+            {context_line}
+
+            Your observations:
+            {agent.perception_summary}
+
+            Knowledge Base (may or may not be relevant to the current mission/team):
+            {self.knowledge_base}
+
+            Here is the proposed plan for the team by your Team Manager {plan_label}:
+
+            {plan}
+
+            As a subteam manager, examine your OWN subteam's designated role in the plan.
+            Given your subteam's observations, status, and capabilities, determine if this plan is effective for your subteam and consistent with your subteam's capabilities.
+            DO NOT be picky, just ensure that the plan works and aligns with your skills without obvious contingencies.
+
+            If it satisfactory, respond with 'YES'
+            If it instead requires adjustment for your subteam's role, give CONCISE feedback directed towards the Team Manager.
+            """
+
+agent.py lines 1399-1418 — feedback_message
+========================================================================
+f"""
+            You are a member of a team structure {[i.name for i in self.children]}, including yourself: {agent.name}.
+            {context_line}
+
+            Your observations:
+            {agent.perception_summary}
+
+            Knowledge Base (may or may not be relevant to the current mission/team):
+            {self.knowledge_base}
+
+            Here is the proposed plan for the team by your Team Manager {plan_label}:
+
+            {plan}
+
+            Specifically, examine your OWN designated role in the plan. Do not concern yourself with the role of your team members.
+            Given your observations, status, and capabilities, determine if this plan is effective for you and consistent with your capabilities.
+
+            If it satisfactory, respond with 'YES'
+            If it instead requires adjustment for your role, give concise feedback directed towards the Team Manager.
+            """
+
+agent.py lines 1510-1522 — user_message
+========================================================================
+f"""
+        Now, generate additional phase(s) to continue the mission. Phases should be concise, simple, and built directly on the exact abilities of the team.
+
+        Your team composition and team abilities:
+        {team_summary}
+        {feedback_section}
+        List new phases using the following tags:
+        <phases>
+        1. ...
+        2. ...
+        </phases>
+        Only include necessary phases. DO NOT include other lines/info in between, it should be exactly n lines.
+        """
+
+agent.py lines 1582-1615 — user_message
+========================================================================
+f"""Great, now let's move to the next phase.
+
+        Timeline: Past Phases: {self.phase_history}, New Current Phase: '{self.current_phase}', Future Phases: {self.future_phases}
+        {feedback_section}
+        {announcement_section}
+        Your team composition and team abilities:
+        {team_summary}
+
+        Break down the next phase into tasks for each team member and define a completion condition using the following tags:
+
+        {agent_tags}
+
+        <completion_condition>
+        A short, specific condition that defines when this phase is complete. Be concrete and measurable.
+        </completion_condition>
+
+        Keep each task concise — one or two short sentences. Be specific with coordinates but skip unnecessary detail, such as communication, staying alert, reporting observations, etc. However, the completion of all tasks SHOULD result in the full completion of the phase, so make them complete.
+
+        Example response:
+        <AGENT_1>
+        Scout northeast region around (45,12) for fire outbreaks.
+        </AGENT_1>
+        <AGENT_2>
+        Extinguish fire at southern border along y=400.
+        </AGENT_2>
+        <AGENT_3>
+        Cut all trees at (30,15), (31,15), (32,15).
+        </AGENT_3>
+        <completion_condition>
+        Northeast scouted, southern fire extinguished, trees at specified coordinates cut.
+        </completion_condition>
+
+        ONLY ASSIGN ONE TASK PER AGENT.
+        """
+
+agent.py lines 1640-1643 — user_message
+========================================================================
+f"""Here is feedback from your team:
+        {self._build_feedback_summary(feedback)}
+
+        Revise your plan accordingly using the same tag structure."""
+
+agent.py lines 1724-1763 — user_message
+========================================================================
+f"""Great, now rewrite tasks for the current phase: '{self.current_phase}'
+        Timeline: Past Phases: {self.phase_history}, Current Phase: '{self.current_phase}', Future Phases: {self.future_phases}
+        {feedback_section}
+        {announcement_section}
+        Your team composition and team abilities:
+        {team_summary}
+
+
+        Explain what changed and why a new plan for this phase is necessary, then break down the current phase into new tasks and update the completion condition using the following tags:
+
+        <explanation>
+        Explain what changed and why a new plan for this phase is necessary.
+        </explanation>
+        {agent_tags}
+        <completion_condition>
+        A short, specific condition that defines when the current phase is complete. Be concrete and measurable.
+        </completion_condition>
+
+        Keep each task concise — one or two short sentences. Be specific with coordinates but skip unnecessary detail, such as communication, staying alert, reporting observations, etc. However, the completion of all tasks SHOULD result in the full completion of the phase, so make them complete.
+
+        Example response:
+        <explanation>
+        Fire spotted in northeast. Reassigning tasks to respond.
+        </explanation>
+
+        <AGENT_1>
+        Scout northeast region around (45,12) for fire outbreaks.
+        </AGENT_1>
+        <AGENT_2>
+        Extinguish fire at southern border along y=400.
+        </AGENT_2>
+        <AGENT_3>
+        Cut all trees at (30,15), (31,15), (32,15).
+        </AGENT_3>
+        <completion_condition>
+        Northeast scouted, southern fire extinguished.
+        </completion_condition>
+
+        ONLY ASSIGN ONE TASK PER AGENT.
+        """
+
+agent.py lines 1788-1791 — user_message
+========================================================================
+f"""Here is feedback from your team:
+        {self._build_feedback_summary(feedback)}
+
+        Revise your plan accordingly using the same tag structure."""
+
+agent.py lines 1842-1857 — system_message
+========================================================================
+f"""You are AGENT_{self.id}, the Team Manager of {self.team_name}: {[a.name for a in self.children if getattr(a, 'alive', True)]}, part of a broader team of embodied agents within a grid world. The map is made up of {self.cfg.envs.map_size} by {self.cfg.envs.map_size} cells/grids with coordinates in the range of [0 to {self.cfg.envs.map_size-1}, 0 to {self.cfg.envs.map_size-1}] with the top left corner of the map being (0,0).
+
+        Your team composition and team abilities:
+        {team_summary}
+
+        Knowledge Base (may or may not be relevant to the current mission/team):
+        {self.knowledge_base}
+
+        Terminology:
+        - Mission: The overall goal for your team (e.g., "Locate and suppress the fire")
+        - Phase: A major step toward the mission (e.g., "Scout for the fire", "Build firebreaks around the fire") 
+        - Task: The specific assignment for each agent in your team for the current phase
+        - Upper team: The team managed by your manager (your parent in the hierarchy)
+
+        Your job is to break down new missions into phases and tasks.
+        First break the mission into phases, then break the first phase into tasks."""
+
+agent.py lines 1868-1888 — user_message
+========================================================================
+f"""Your mission: '{self.mission}'
+        Upper team phase: {self.upperteam_phase}
+        Upper team mission: {self.upperteam_mission}
+        {feedback_section}
+        First, break your mission into phases using the following tags:
+
+        <phases>
+        List each phase on a separate line, numbered or with bullet points.
+        </phases>
+
+        Example response:
+        <phases>
+        1. Scout for the fire
+        2. Move to the fire and suppress it
+        3. Check if the fire is fully contained
+        </phases>
+
+        Phases should be concise, simple, and built directly on the exact abilities of the team.
+        You may only need one/a few phases. Do not include unnecessary phases, or phases that are outside of agent capabilities. However, look at specifically how many agents you have and what needs to be done for the mission to be fully complete. You may have to repeat groups of phases to complete the whole mission.
+        DO NOT BREAK DOWN ANY PHASES INTO TASKS YET. KEEP THEM CONCISE.
+        """
+
+agent.py lines 1910-1938 — user_message
+========================================================================
+f"""Now break down the first phase: '{self.current_phase}' into tasks for each team member and define a completion condition using the following tags:
+
+        {agent_tags}
+        <completion_condition>
+        A short, specific condition that defines when this first phase is complete. Be concrete and measurable.
+        </completion_condition>
+
+
+
+        Consider each agent's capabilities, current position, and status when assigning tasks.
+
+        Example response:
+        <AGENT_1>
+        Cut all trees at (30,15), (31,15), (32,15).
+        </AGENT_1>
+        <AGENT_2>
+        Scout northeast region around (45,12) for fire outbreaks.
+        </AGENT_2>
+        <AGENT_3>
+        Extinguish fire at southern border along y=400.
+        </AGENT_3>
+        <completion_condition>
+        Trees cut at specified coordinates, northeast scouted.
+        </completion_condition>
+
+        Keep each task concise — one or two short sentences. Be specific with coordinates but skip unnecessary detail, such as communication, staying alert, reporting observations, etc. However, the completion of all tasks SHOULD result in the full completion of the phase, so make them complete.
+
+        ONLY ASSIGN ONE TASK PER AGENT.
+        """
+
+agent.py lines 1962-1964 — user_message
+========================================================================
+f"""Here is feedback from your team:
+                    {self._build_feedback_summary(feedback)}
+                    Revise your plan accordingly using the same tag structure."""

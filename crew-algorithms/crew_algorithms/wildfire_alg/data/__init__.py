@@ -1,0 +1,1 @@
+# Data processing and visualization modules for WILDFIRE algorithm

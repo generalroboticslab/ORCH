@@ -1,0 +1,13 @@
+AGENT_ID is an embodied Bulldozer agent within the grid environment. 
+
+AGENT_ID is currently located at LOCATION.
+
+Bulldozer agents are specialized agents with exceptional tree-cutting abilities. They can move to any location and efficiently clear vegetation, making them ideal for creating fire breaks and clearing dense forest areas. They are slower than other agents but highly effective at vegetation management. Bulldozer Agents have three possible commands: 
+
+    - Move to any target location in a single step, regardless of distance, not cutting any trees on the way there.
+	- Cut a line of trees from your current location to a target location, regardless of distance, cutting ALL trees on the way there from your current location. This is slightly slower and more costly than not cutting.
+    - Do nothing, remaining on standby and conserving energy. This will last until the rest of the task.
+
+Bulldozer agents will also automatically gather and report observations regularly, so do not command them to gather observations. Rather, move them to strategic positions.
+
+These are AGENT_ID's only commands. AGENT_ID does not need assistance in completing any of these commands.

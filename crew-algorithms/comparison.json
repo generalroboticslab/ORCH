@@ -1,0 +1,382 @@
+{
+  "Scale_Level_Complex": {
+    "name": "Scale Level: Complex",
+    "description": "Large-scale scenario with many agents of all types and civilians.",
+    "level": "Scale_Level_Complex",
+    "seeds": [
+      42,
+      137,
+      256,
+      503,
+      819
+    ],
+    "collaboration_mode": "ai_control",
+    "worker_counts": {
+      "firefighter": 25,
+      "bulldozer": 5,
+      "drone": 10,
+      "helicopter": 10
+    },
+    "mission_description": "Locate and suppress fire using available water source. Simultaneously search for and rescue 1 civilian groups (5 per group). Map size: 200x200 grid.",
+    "generated_structure": {
+      "explanation": "The revised team structure reassigns the 10 helicopters to support the FIRE_SUPPRESSION_TEAM for water refill and deployment, enhancing their capability to suppress the fire efficiently. This adjustment ensures a more efficient utilization of all available agents and better aligns with the mission requirements.",
+      "root_manager": {
+        "manager_type": "horizontal",
+        "team_name": "MISSION_COORDINATION",
+        "children": [
+          {
+            "type": "manager",
+            "manager_type": "full",
+            "team_name": "FIRE_SUPPRESSION_TEAM",
+            "children": [
+              {
+                "type": "worker",
+                "worker_type": "firefighter",
+                "count": 15
+              },
+              {
+                "type": "worker",
+                "worker_type": "bulldozer",
+                "count": 5
+              },
+              {
+                "type": "worker",
+                "worker_type": "helicopter",
+                "count": 5
+              }
+            ]
+          },
+          {
+            "type": "manager",
+            "manager_type": "horizontal",
+            "team_name": "SUPPORT_TEAM",
+            "children": [
+              {
+                "type": "worker",
+                "worker_type": "firefighter",
+                "count": 10
+              },
+              {
+                "type": "worker",
+                "worker_type": "helicopter",
+                "count": 5
+              },
+              {
+                "type": "worker",
+                "worker_type": "drone",
+                "count": 10
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "generated_hierarchy": {
+      "managers": [
+        "AGENT_52",
+        "AGENT_53",
+        "AGENT_51"
+      ],
+      "config": {
+        "AGENT_52": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10",
+            "AGENT_11",
+            "AGENT_12",
+            "AGENT_13",
+            "AGENT_14",
+            "AGENT_15",
+            "AGENT_26",
+            "AGENT_27",
+            "AGENT_28",
+            "AGENT_29",
+            "AGENT_30",
+            "AGENT_41",
+            "AGENT_42",
+            "AGENT_43",
+            "AGENT_44",
+            "AGENT_45"
+          ],
+          "type": "vertical",
+          "team_name": "FIRE_SUPPRESSION_TEAM"
+        },
+        "AGENT_53": {
+          "children": [
+            "AGENT_16",
+            "AGENT_17",
+            "AGENT_18",
+            "AGENT_19",
+            "AGENT_20",
+            "AGENT_21",
+            "AGENT_22",
+            "AGENT_23",
+            "AGENT_24",
+            "AGENT_25",
+            "AGENT_46",
+            "AGENT_47",
+            "AGENT_48",
+            "AGENT_49",
+            "AGENT_50",
+            "AGENT_31",
+            "AGENT_32",
+            "AGENT_33",
+            "AGENT_34",
+            "AGENT_35",
+            "AGENT_36",
+            "AGENT_37",
+            "AGENT_38",
+            "AGENT_39",
+            "AGENT_40"
+          ],
+          "type": "horizontal",
+          "team_name": "SUPPORT_TEAM"
+        },
+        "AGENT_51": {
+          "children": [
+            "AGENT_52",
+            "AGENT_53"
+          ],
+          "type": "horizontal",
+          "team_name": "MISSION_COORDINATION"
+        }
+      }
+    },
+    "preset_hierarchy": {
+      "managers": [
+        "AGENT_51",
+        "AGENT_52",
+        "AGENT_53",
+        "AGENT_54",
+        "AGENT_55",
+        "AGENT_56"
+      ],
+      "config": {
+        "AGENT_51": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10"
+          ],
+          "type": "horizontal",
+          "team_name": "Squad A"
+        },
+        "AGENT_52": {
+          "children": [
+            "AGENT_11",
+            "AGENT_12",
+            "AGENT_13",
+            "AGENT_14",
+            "AGENT_15",
+            "AGENT_16",
+            "AGENT_17",
+            "AGENT_18",
+            "AGENT_19",
+            "AGENT_20"
+          ],
+          "type": "horizontal",
+          "team_name": "Squad B"
+        },
+        "AGENT_53": {
+          "children": [
+            "AGENT_21",
+            "AGENT_22",
+            "AGENT_23",
+            "AGENT_24",
+            "AGENT_25",
+            "AGENT_26",
+            "AGENT_27",
+            "AGENT_28",
+            "AGENT_29",
+            "AGENT_30"
+          ],
+          "type": "horizontal",
+          "team_name": "Squad C"
+        },
+        "AGENT_54": {
+          "children": [
+            "AGENT_31",
+            "AGENT_32",
+            "AGENT_33",
+            "AGENT_34",
+            "AGENT_35",
+            "AGENT_36",
+            "AGENT_37",
+            "AGENT_38",
+            "AGENT_39",
+            "AGENT_40"
+          ],
+          "type": "horizontal",
+          "team_name": "Squad D"
+        },
+        "AGENT_55": {
+          "children": [
+            "AGENT_41",
+            "AGENT_42",
+            "AGENT_43",
+            "AGENT_44",
+            "AGENT_45",
+            "AGENT_46",
+            "AGENT_47",
+            "AGENT_48",
+            "AGENT_49",
+            "AGENT_50"
+          ],
+          "type": "horizontal",
+          "team_name": "Squad E"
+        },
+        "AGENT_56": {
+          "children": [
+            "AGENT_51",
+            "AGENT_52",
+            "AGENT_53",
+            "AGENT_54",
+            "AGENT_55"
+          ],
+          "type": "vertical",
+          "team_name": "Command"
+        }
+      }
+    },
+    "comparison": {
+      "exact_match": false,
+      "topology_match": false,
+      "manager_type_match": false,
+      "team_name_match": false,
+      "generated_manager_count": 3,
+      "preset_manager_count": 6,
+      "generated_only_edges": [
+        "AGENT_51->AGENT_52",
+        "AGENT_51->AGENT_53",
+        "AGENT_52->AGENT_1",
+        "AGENT_52->AGENT_10",
+        "AGENT_52->AGENT_2",
+        "AGENT_52->AGENT_26",
+        "AGENT_52->AGENT_27",
+        "AGENT_52->AGENT_28",
+        "AGENT_52->AGENT_29",
+        "AGENT_52->AGENT_3",
+        "AGENT_52->AGENT_30",
+        "AGENT_52->AGENT_4",
+        "AGENT_52->AGENT_41",
+        "AGENT_52->AGENT_42",
+        "AGENT_52->AGENT_43",
+        "AGENT_52->AGENT_44",
+        "AGENT_52->AGENT_45",
+        "AGENT_52->AGENT_5",
+        "AGENT_52->AGENT_6",
+        "AGENT_52->AGENT_7",
+        "AGENT_52->AGENT_8",
+        "AGENT_52->AGENT_9",
+        "AGENT_53->AGENT_16",
+        "AGENT_53->AGENT_17",
+        "AGENT_53->AGENT_18",
+        "AGENT_53->AGENT_19",
+        "AGENT_53->AGENT_20",
+        "AGENT_53->AGENT_31",
+        "AGENT_53->AGENT_32",
+        "AGENT_53->AGENT_33",
+        "AGENT_53->AGENT_34",
+        "AGENT_53->AGENT_35",
+        "AGENT_53->AGENT_36",
+        "AGENT_53->AGENT_37",
+        "AGENT_53->AGENT_38",
+        "AGENT_53->AGENT_39",
+        "AGENT_53->AGENT_40",
+        "AGENT_53->AGENT_46",
+        "AGENT_53->AGENT_47",
+        "AGENT_53->AGENT_48",
+        "AGENT_53->AGENT_49",
+        "AGENT_53->AGENT_50"
+      ],
+      "preset_only_edges": [
+        "AGENT_51->AGENT_1",
+        "AGENT_51->AGENT_10",
+        "AGENT_51->AGENT_2",
+        "AGENT_51->AGENT_3",
+        "AGENT_51->AGENT_4",
+        "AGENT_51->AGENT_5",
+        "AGENT_51->AGENT_6",
+        "AGENT_51->AGENT_7",
+        "AGENT_51->AGENT_8",
+        "AGENT_51->AGENT_9",
+        "AGENT_52->AGENT_16",
+        "AGENT_52->AGENT_17",
+        "AGENT_52->AGENT_18",
+        "AGENT_52->AGENT_19",
+        "AGENT_52->AGENT_20",
+        "AGENT_53->AGENT_26",
+        "AGENT_53->AGENT_27",
+        "AGENT_53->AGENT_28",
+        "AGENT_53->AGENT_29",
+        "AGENT_53->AGENT_30",
+        "AGENT_54->AGENT_31",
+        "AGENT_54->AGENT_32",
+        "AGENT_54->AGENT_33",
+        "AGENT_54->AGENT_34",
+        "AGENT_54->AGENT_35",
+        "AGENT_54->AGENT_36",
+        "AGENT_54->AGENT_37",
+        "AGENT_54->AGENT_38",
+        "AGENT_54->AGENT_39",
+        "AGENT_54->AGENT_40",
+        "AGENT_55->AGENT_41",
+        "AGENT_55->AGENT_42",
+        "AGENT_55->AGENT_43",
+        "AGENT_55->AGENT_44",
+        "AGENT_55->AGENT_45",
+        "AGENT_55->AGENT_46",
+        "AGENT_55->AGENT_47",
+        "AGENT_55->AGENT_48",
+        "AGENT_55->AGENT_49",
+        "AGENT_55->AGENT_50",
+        "AGENT_56->AGENT_51",
+        "AGENT_56->AGENT_52",
+        "AGENT_56->AGENT_53",
+        "AGENT_56->AGENT_54",
+        "AGENT_56->AGENT_55"
+      ],
+      "generated_only_managers": [],
+      "preset_only_managers": [
+        "AGENT_54",
+        "AGENT_55",
+        "AGENT_56"
+      ],
+      "manager_type_diffs": {
+        "AGENT_52": {
+          "generated": "vertical",
+          "preset": "horizontal"
+        }
+      },
+      "team_name_diffs": {
+        "AGENT_51": {
+          "generated": "MISSION_COORDINATION",
+          "preset": "Squad A"
+        },
+        "AGENT_52": {
+          "generated": "FIRE_SUPPRESSION_TEAM",
+          "preset": "Squad B"
+        },
+        "AGENT_53": {
+          "generated": "SUPPORT_TEAM",
+          "preset": "Squad C"
+        }
+      }
+    }
+  }
+}

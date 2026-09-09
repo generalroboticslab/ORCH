@@ -1,0 +1,3 @@
+            - Move a few steps in the the direction of a target coordinate location.
+            - Move a few steps in the the direction of a target coordinate location cutting all trees on the way there, creating a line of trees from your current location pointing towards the target location.
+            - Do nothing, remaining on standby and conserving energy.

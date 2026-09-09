@@ -1,0 +1,107 @@
+# Logs and output directories
+logs/
+output/
+outputs/
+results/
+past_logs/
+render/
+*.log
+
+# Data directories
+data/
+assets/
+*.csv
+*.json
+*.mp4
+*.png
+*.jpg
+*.jpeg
+
+# Exclude txt files but keep requirements
+*.txt
+!requirements-full.txt
+!crew_algorithms/wildfire_alg/requirements.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Documentation
+docs/
+*.md
+*.rst
+
+# Test files
+test/
+tests/
+*_test.py
+test_*.py
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Keep only essential files - exclude large data directories
+crew_algorithms/*/data/
+crew_algorithms/*/logs/
+crew_algorithms/*/results/
+crew_algorithms/*/past_logs/
+crew_algorithms/*/render/
+crew_algorithms/*/output/
+crew_algorithms/*/outputs/
+crew_algorithms/*/wildfire_data

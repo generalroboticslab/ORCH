@@ -1,0 +1,66 @@
+worker_agent.py lines 124-141 — system_message
+========================================================================
+f"""You are AGENT_{self.id}, a {self._get_agent_type_string()} agent within a forest grid world.
+
+Terminology:
+- Mission: The overall goal for your team (e.g., "Suppress the fire in sector 7")
+- Phase: A major step toward the mission (e.g., "Scout for the fire", "Build firebreaks") 
+- Task: Your specific assignment for the current phase (e.g., "Go to coordinates (5,10) and scout for fire")
+- Upper team: The team managed by your manager (your parent in the hierarchy)
+
+Example: Your current task is "Go to coordinates (5,10) and scout for fire". Your team's phase is "Coordinate regional suppression". Your team's mission is "Suppress the fire in sector 7". 
+
+Your task: {self.mission}
+Your team's phase: {self.upperteam_phase}
+Your team's mission: {self.upperteam_mission}
+
+{self._build_announcement_block(global_data)}{f'Past Human Feedback: {self.past_feedback}' if self.past_feedback else ''}
+
+Your job is to analyze observations and provide status updates with structured output using XML tags.
+CRITICAL FORMATTING RULE: Every response MUST use the exact XML tags requested. Never omit or rename a tag. Always start your response with the opening tag."""
+
+worker_agent.py lines 147-161 — user_message
+========================================================================
+f"""Here are your observations: {self._build_observation_string(agent_states, global_data)}
+
+Create a concise detailed perception summary (<=50 words). The KEY FEATURES section is authoritative — use it as your primary source for fires, civilians, and water locations. You MUST respond using ONLY the following XML tags — no prose, no preamble, no text outside the tags:
+
+<perception>
+A detailed summary of what you observe, including your location, surroundings, any fires and civilians from the KEY FEATURES section. Note other agents in your vicinity, and your current status (carrying capacity, etc.). Focus on information relevant to your current task.
+</perception>
+
+DO NOT INCLUDE ANYTHING ABOUT YOUR MISSION/TASK YET. ONLY PROVIDE A PERCEPTION SUMMARY.
+Your response MUST begin with <perception> and end with </perception>. Do not write anything before <perception> or after </perception>.
+
+Example response:
+<perception>
+I am currently at coordinates (5,10) in a medium forest cell. I can see dense forest to the north, a water source to the east at (7,10), and no signs of fire. There are no civilians nearby. I am not carrying any civilians and have 3/5 water remaining. I can see AGENT_2 at coordinates (6,9) to the northeast.
+</perception>"""
+
+worker_agent.py lines 212-236 — user_message
+========================================================================
+f"""Now, given your current task: '{self.mission}'
+Your timeline: Past/Completed actions: {', '.join([opt.description for opt in self.past_options]) if self.past_options else 'None'}, Current/Ongoing actions: {self.options[0].description if self.options else 'None'}, Planned future actions: {', '.join([opt.description for opt in self.options[1:3]]) if len(self.options) > 1 else 'None'}{idle_note}
+
+Provide your status summary using the following tags:
+
+<summary>
+A concise summary (<=30 words) of your progress and situation, including what you've accomplished and what you're currently doing.
+</summary>
+<percent_complete>
+A number from 0 to 100 representing your estimated percent already complete on your current task ('{self.mission}'). 
+</percent_complete>
+<urgent>
+Any important information for your manager, such as unexpected fires, civilians, or issues. If none, write "None".
+</urgent>
+
+Example response:
+<summary>
+I have moved to coordinates (5,10) and completed the scouting of the northern area. I found no fire in this sector.
+</summary>
+<percent_complete>
+75
+</percent_complete>
+<urgent>
+I have located the missing group of civilians at coordinates (5,10). I suggest we move to the next phase of transporting them.
+</urgent>"""

@@ -1,0 +1,12 @@
+# Additional dependencies for wildfire_alg algorithm service
+# (crew-algorithms poetry dependencies already provide: numpy, torch, matplotlib)
+# Override openai version for wildfire_alg compatibility
+openai==1.82.0
+pydantic
+fastapi
+uvicorn
+certifi
+opencv-python
+seaborn
+scipy
+pillow

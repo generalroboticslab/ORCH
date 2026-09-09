@@ -1,0 +1,4 @@
+Bulldozer Agents:
+            - Move to any coordinate location not cutting any trees on the way there. Distance does not matter, they will reach that location in one move.
+            - Move to any coordinate location cutting all trees on the way there, creating a line of trees from your current location to the target coordinate location. Distance does not matter, they will reach that location in one move.
+            - Do nothing, remaining on standby and conserving energy.

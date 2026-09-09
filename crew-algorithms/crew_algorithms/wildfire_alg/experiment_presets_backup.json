@@ -1,0 +1,809 @@
+{
+  "Cut_Trees_Sparse_small": {
+    "name": "Cut Trees: Sparse (Small)",
+    "description": "Small map with sparse trees to cut down",
+    "level": "Cut_Trees_Sparse_small",
+    "seeds": [375, 483, 43, 6370, 9964, 2097, 25808, 83248, 48320, 94510],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_4"
+      ],
+      "config": {
+        "AGENT_4": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3"
+          ],
+          "type": "horizontal",
+          "team_name": "TREE_CUTTING_TEAM"
+        }
+      }
+    }
+  },
+  "Cut_Trees_Sparse_large": {
+    "name": "Cut Trees: Sparse (Large)",
+    "description": "Large map with many sparse trees to cut down",
+    "level": "Cut_Trees_Sparse_large",
+    "seeds": [212, 981, 1530, 5382, 9405],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_11"
+      ],
+      "config": {
+        "AGENT_11": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10"
+          ],
+          "type": "horizontal",
+          "team_name": "TREE_CLEARANCE_TEAM"
+        }
+      }
+    }
+  },
+  "Cut_Trees_Lines_small": {
+    "name": "Cut Trees: Lines (Small)",
+    "description": "Small map with trees in lines to create firebreaks",
+    "level": "Cut_Trees_Lines_small",
+    "seeds": [9259, 4881, 8456, 59497, 66768, 78914],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_4"
+      ],
+      "config": {
+        "AGENT_4": {
+          "children": [
+            "AGENT_3",
+            "AGENT_1",
+            "AGENT_2"
+          ],
+          "type": "horizontal",
+          "team_name": "LINE_TREE_CLEARANCE_TEAM"
+        }
+      }
+    }
+  },
+  "Cut_Trees_Lines_large": {
+    "name": "Cut Trees: Lines (Large)",
+    "description": "Large map with multiple tree lines to cut",
+    "level": "Cut_Trees_Lines_large",
+    "seeds": [820, 5406, 6503, 7328, 2747],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_8"
+      ],
+      "config": {
+        "AGENT_8": {
+          "children": [
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4"
+          ],
+          "type": "horizontal",
+          "team_name": "TREE_CLEARING_LINE_TEAMS"
+        }
+      }
+    }
+  },
+  "Scout_Fire_small": {
+    "name": "Scout Fire (Small)",
+    "description": "Scout for fires in a small area using drones",
+    "level": "Scout_Fire_small",
+    "seeds": [4651, 6841, 7593, 1012, 8528, 29751, 36346, 42589, 43846, 62563],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_4"
+      ],
+      "config": {
+        "AGENT_4": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3"
+          ],
+          "type": "horizontal",
+          "team_name": "MAP_WIDE_FIRE_SEARCH_COORDINATION"
+        }
+      }
+    }
+  },
+  "Scout_Fire_large": {
+    "name": "Scout Fire (Large)",
+    "description": "Scout for fires across a large area",
+    "level": "Scout_Fire_large",
+    "seeds": [5324, 3603, 8592, 43126, 70576],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_6"
+      ],
+      "config": {
+        "AGENT_6": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5"
+          ],
+          "type": "horizontal",
+          "team_name": "MAP_WIDE_FIRE_SEARCH_AND_CONFIRM"
+        }
+      }
+    }
+  },
+  "Transport_Firefighters_small": {
+    "name": "Transport Firefighters (Small)",
+    "description": "Use helicopters to transport firefighters",
+    "level": "Transport_Firefighters_small",
+    "seeds": [283, 2461, 2478, 7622, 7647],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_8"
+      ],
+      "config": {
+        "AGENT_8": {
+          "children": [
+            "AGENT_7",
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6"
+          ],
+          "type": "vertical",
+          "team_name": "FIREFIGHTER_DEPLOYMENT_TRANSPORT"
+        }
+      }
+    }
+  },
+  "Transport_Firefighters_large": {
+    "name": "Transport Firefighters (Large)",
+    "description": "Large-scale firefighter transport operations",
+    "level": "Transport_Firefighters_large",
+    "seeds": [741, 7305, 9528, 8079, 6232],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_15"
+      ],
+      "config": {
+        "AGENT_15": {
+          "children": [
+            "AGENT_13",
+            "AGENT_14",
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10",
+            "AGENT_11",
+            "AGENT_12"
+          ],
+          "type": "vertical",
+          "team_name": "FIREFIGHTER DEPLOYMENT AIRLIFT COMMAND"
+        }
+      }
+    }
+  },
+  "Rescue_Civilians_Known_Location_small": {
+    "name": "Rescue Civilians: Known Location (Small)",
+    "description": "Rescue civilians from known locations",
+    "level": "Rescue_Civilians_Known_Location_small",
+    "seeds": [9502, 3972, 6545, 5884, 8491, 7723, 30743, 51358],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_4"
+      ],
+      "config": {
+        "AGENT_4": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3"
+          ],
+          "type": "vertical",
+          "team_name": "CIVILIAN_EXTRACTION_TEAM"
+        }
+      }
+    }
+  },
+  "Rescue_Civilians_Known_Location_large": {
+    "name": "Rescue Civilians: Known Location (Large)",
+    "description": "Large-scale civilian rescue from known locations",
+    "level": "Rescue_Civilians_Known_Location_large",
+    "seeds": [7979, 1539, 2269, 7152, 5226],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_6"
+      ],
+      "config": {
+        "AGENT_6": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5"
+          ],
+          "type": "horizontal",
+          "team_name": "CIVILIAN RESCUE COORDINATION"
+        }
+      }
+    }
+  },
+  "Suppress_Fire_Contain": {
+    "name": "Suppress Fire: Contain",
+    "description": "Contain fire using firefighters and bulldozers",
+    "level": "Suppress_Fire_Contain",
+    "seeds": [3761, 3207, 1841, 2943, 425, 5149, 7832, 1478, 6293, 8517],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_8"
+      ],
+      "config": {
+        "AGENT_8": {
+          "children": [
+            "AGENT_6",
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_7"
+          ],
+          "type": "vertical",
+          "team_name": "FIREBREAK CONTAINMENT TEAM"
+        }
+      }
+    }
+  },
+  "Suppress_Fire_Extinguish": {
+    "name": "Suppress Fire: Extinguish",
+    "description": "Extinguish fire using water from firefighters",
+    "level": "Suppress_Fire_Extinguish",
+    "seeds": [1975, 4936, 6216, 2817, 6628, 3184, 7956, 1623, 4587, 9241],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_9"
+      ],
+      "config": {
+        "AGENT_9": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8"
+          ],
+          "type": "vertical",
+          "team_name": "FIRE_SUPPRESSION_TEAM"
+        }
+      }
+    }
+  },
+  "Rescue_Civilians_Search_and_Rescue": {
+    "name": "Rescue Civilians: Search and Rescue",
+    "description": "Search for and rescue civilians using combined forces",
+    "level": "Rescue_Civilians_Search_and_Rescue",
+    "seeds": [966, 7377, 7285, 6505, 1286],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_8"
+      ],
+      "config": {
+        "AGENT_8": {
+          "children": [
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5"
+          ],
+          "type": "vertical",
+          "team_name": "CIVILIAN_SEARCH_AND_RESCUE_TEAM"
+        }
+      }
+    }
+  },
+  "Suppress_Fire_Locate_and_Suppress": {
+    "name": "Suppress Fire: Locate and Suppress",
+    "description": "Locate fires and suppress them with mixed units",
+    "level": "Suppress_Fire_Locate_and_Suppress",
+    "seeds": [5280, 2142, 2628, 2276, 524, 4813, 7291, 1536, 6847, 9354],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_9"
+      ],
+      "config": {
+        "AGENT_9": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8"
+          ],
+          "type": "vertical",
+          "team_name": "FIRE_SUPPRESSION_TEAM"
+        }
+      }
+    }
+  },
+  "Suppress_Fire_Locate_Deploy_Suppress": {
+    "name": "Suppress Fire: Locate, Deploy & Suppress",
+    "description": "Complex fire suppression with all unit types",
+    "level": "Suppress_Fire_Locate_Deploy_Suppress",
+    "seeds": [6309, 3821, 6117, 8747, 2397, 2783, 5641, 8129, 3467, 7094],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_16",
+        "AGENT_17",
+        "AGENT_15"
+      ],
+      "config": {
+        "AGENT_15": {
+          "children": [
+            "AGENT_11",
+            "AGENT_12"
+          ],
+          "type": "horizontal",
+          "team_name": "FIRE_RECON_TEAM"
+        },
+        "AGENT_16": {
+          "children": [
+            "AGENT_13",
+            "AGENT_14",
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10"
+          ],
+          "type": "horizontal",
+          "team_name": "FIRE_SUPPRESSION_TEAM"
+        },
+        "AGENT_17": {
+          "children": [
+            "AGENT_15",
+            "AGENT_16"
+          ],
+          "type": "vertical",
+          "team_name": "WILDFIRE_SEARCH_AND_SUPPRESSION_COMMAND"
+        }
+      }
+    }
+  },
+  "Rescue_Civilians_Search_Rescue_Transport": {
+    "name": "Rescue Civilians: Search, Rescue & Transport",
+    "description": "Complete civilian rescue operations with transport",
+    "level": "Rescue_Civilians_Search_Rescue_Transport",
+    "seeds": [8208, 150, 2577, 7419, 2318],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_15"
+      ],
+      "config": {
+        "AGENT_15": {
+          "children": [
+            "AGENT_11",
+            "AGENT_12",
+            "AGENT_13",
+            "AGENT_14",
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10"
+          ],
+          "type": "vertical",
+          "team_name": "SEARCH AND RESCUE COMMAND"
+        }
+      }
+    }
+  },
+  "Full_Game": {
+    "name": "Full Game",
+    "description": "Complete wildfire response scenario with all objectives",
+    "level": "Full_Game",
+    "seeds": [6434, 9424, 9500, 8378, 6543, 421, 1386, 1119],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_16",
+        "AGENT_17",
+        "AGENT_18",
+        "AGENT_19"
+      ],
+      "config": {
+        "AGENT_16": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_11",
+            "AGENT_14"
+          ],
+          "type": "horizontal",
+          "team_name": "Team A"
+        },
+        "AGENT_17": {
+          "children": [
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10",
+            "AGENT_15"
+          ],
+          "type": "horizontal",
+          "team_name": "Team B"
+        },
+        "AGENT_18": {
+          "children": [
+            "AGENT_12",
+            "AGENT_13"
+          ],
+          "type": "horizontal",
+          "team_name": "Recon Team"
+        },
+        "AGENT_19": {
+          "children": [
+            "AGENT_16",
+            "AGENT_17",
+            "AGENT_18"
+          ],
+          "type": "vertical",
+          "team_name": "Main Team"
+        }
+      }
+    }
+  },
+  "Scout_Fire_Drone_Lost": {
+    "name": "Scout Fire: Drone Lost",
+    "description": "A drone goes missing mid-game \u2014 adapt with remaining scouts",
+    "level": "Scout_Fire_Drone_Lost",
+    "seeds": [
+      42,
+      137,
+      256, 
+      8362, 
+      8503
+    ],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_4"
+      ],
+      "config": {
+        "AGENT_4": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3"
+          ],
+          "type": "horizontal",
+          "team_name": "MAP SEARCH AND FIRE CONFIRMATION TEAM"
+        }
+      }
+    }
+  },
+  "Transport_Helicopter_Down": {
+    "name": "Transport: Helicopter Down",
+    "description": "A helicopter goes out of commission mid-transport",
+    "level": "Transport_Helicopter_Down",
+    "seeds": [
+      42,
+      137,
+      256, 
+      6272, 
+      8510
+    ],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_13",
+        "AGENT_14",
+        "AGENT_15"
+      ],
+      "config": {
+        "AGENT_13": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_11"
+          ],
+          "type": "horizontal",
+          "team_name": "Transport Team A"
+        },
+        "AGENT_14": {
+          "children": [
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8",
+            "AGENT_9",
+            "AGENT_10",
+            "AGENT_12"
+          ],
+          "type": "horizontal",
+          "team_name": "Transport Team B"
+        },
+        "AGENT_15": {
+          "children": [
+            "AGENT_13",
+            "AGENT_14"
+          ],
+          "type": "horizontal",
+          "team_name": "Transport Command"
+        }
+      }
+    }
+  },
+  "Rescue_Civilians_Surprise": {
+    "name": "Rescue: Surprise Civilians",
+    "description": "Extra civilians appear mid-game in a new area",
+    "level": "Rescue_Civilians_Surprise",
+    "seeds": [
+      42,
+      137,
+      256, 5478, 4792
+    ],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_6"
+      ],
+      "config": {
+        "AGENT_6": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5"
+          ],
+          "type": "horizontal",
+          "team_name": "CIVILIAN RESCUE COORDINATION"
+        }
+      }
+    }
+  },
+  "Suppress_Fire_Extinguish_Second_Fire": {
+    "name": "Suppress Fire: Second Fire",
+    "description": "A second fire breaks out mid-game \u2014 split resources to handle both",
+    "level": "Suppress_Fire_Extinguish_Second_Fire",
+    "seeds": [
+      42,
+      8778,
+      4977, 
+      6979, 
+      1167
+    ],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_9"
+      ],
+      "config": {
+        "AGENT_9": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7",
+            "AGENT_8"
+          ],
+          "type": "vertical",
+          "team_name": "FIRE_SUPPRESSION_TEAM"
+        }
+      }
+    }
+  },
+  "Suppress_Fire_Contain_Water_Source": {
+    "name": "Suppress Fire: Water Source Appears",
+    "description": "Start without water \u2014 a water source appears mid-game, unlocking spray",
+    "level": "Suppress_Fire_Contain_Water_Source",
+    "seeds": [
+      6124,
+      1393,
+      5217,
+      8643,
+      4977
+    ],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_6"
+      ],
+      "config": {
+        "AGENT_6": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5"
+          ],
+          "type": "vertical",
+          "team_name": "FIREBREAK CONTAINMENT TEAM"
+        }
+      }
+    }
+  },
+  "Suppress_Fire_Extinguish_Rapid_Growth": {
+    "name": "Suppress Fire: Rapid Growth",
+    "description": "Fire suddenly spreads rapidly due to worsening conditions",
+    "level": "Suppress_Fire_Extinguish_Rapid_Growth",
+    "seeds": [
+      42,
+      137,
+      256,
+      1960,
+      3429
+    ],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": [
+        "AGENT_8"
+      ],
+      "config": {
+        "AGENT_8": {
+          "children": [
+            "AGENT_1",
+            "AGENT_2",
+            "AGENT_3",
+            "AGENT_4",
+            "AGENT_5",
+            "AGENT_6",
+            "AGENT_7"
+          ],
+          "type": "vertical",
+          "team_name": "FIRE_SUPPRESSION_TASK_FORCE"
+        }
+      }
+    }
+  },
+  "Scale_Level_Simple": {
+    "name": "Scale Level: Simple",
+    "description": "Large map with many trees and firefighters, simple scenario.",
+    "level": "Scale_Level_Simple",
+    "seeds": [42, 137, 256, 503, 819],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": ["AGENT_51", "AGENT_52", "AGENT_53", "AGENT_54", "AGENT_55", "AGENT_56"],
+      "config": {
+        "AGENT_51": {
+          "children": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4", "AGENT_5", "AGENT_6", "AGENT_7", "AGENT_8", "AGENT_9", "AGENT_10"],
+          "type": "horizontal",
+          "team_name": "Squad A"
+        },
+        "AGENT_52": {
+          "children": ["AGENT_11", "AGENT_12", "AGENT_13", "AGENT_14", "AGENT_15", "AGENT_16", "AGENT_17", "AGENT_18", "AGENT_19", "AGENT_20"],
+          "type": "horizontal",
+          "team_name": "Squad B"
+        },
+        "AGENT_53": {
+          "children": ["AGENT_21", "AGENT_22", "AGENT_23", "AGENT_24", "AGENT_25", "AGENT_26", "AGENT_27", "AGENT_28", "AGENT_29", "AGENT_30"],
+          "type": "horizontal",
+          "team_name": "Squad C"
+        },
+        "AGENT_54": {
+          "children": ["AGENT_31", "AGENT_32", "AGENT_33", "AGENT_34", "AGENT_35", "AGENT_36", "AGENT_37", "AGENT_38", "AGENT_39", "AGENT_40"],
+          "type": "horizontal",
+          "team_name": "Squad D"
+        },
+        "AGENT_55": {
+          "children": ["AGENT_41", "AGENT_42", "AGENT_43", "AGENT_44", "AGENT_45", "AGENT_46", "AGENT_47", "AGENT_48", "AGENT_49", "AGENT_50"],
+          "type": "horizontal",
+          "team_name": "Squad E"
+        },
+        "AGENT_56": {
+          "children": ["AGENT_51", "AGENT_52", "AGENT_53", "AGENT_54", "AGENT_55"],
+          "type": "horizontal",
+          "team_name": "Command"
+        }
+      }
+    }
+  },
+  "Scale_Level_Complex": {
+    "name": "Scale Level: Complex",
+    "description": "Large-scale scenario with many agents of all types and civilians.",
+    "level": "Scale_Level_Complex",
+    "seeds": [42, 137, 256, 503, 819],
+    "collaboration_mode": "ai_control",
+    "hierarchy": {
+      "managers": ["AGENT_51", "AGENT_52", "AGENT_53", "AGENT_54", "AGENT_55", "AGENT_56"],
+      "config": {
+        "AGENT_51": {
+          "children": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4", "AGENT_5", "AGENT_6", "AGENT_7", "AGENT_8", "AGENT_9", "AGENT_10"],
+          "type": "horizontal",
+          "team_name": "Squad A"
+        },
+        "AGENT_52": {
+          "children": ["AGENT_11", "AGENT_12", "AGENT_13", "AGENT_14", "AGENT_15", "AGENT_16", "AGENT_17", "AGENT_18", "AGENT_19", "AGENT_20"],
+          "type": "horizontal",
+          "team_name": "Squad B"
+        },
+        "AGENT_53": {
+          "children": ["AGENT_21", "AGENT_22", "AGENT_23", "AGENT_24", "AGENT_25", "AGENT_26", "AGENT_27", "AGENT_28", "AGENT_29", "AGENT_30"],
+          "type": "horizontal",
+          "team_name": "Squad C"
+        },
+        "AGENT_54": {
+          "children": ["AGENT_31", "AGENT_32", "AGENT_33", "AGENT_34", "AGENT_35", "AGENT_36", "AGENT_37", "AGENT_38", "AGENT_39", "AGENT_40"],
+          "type": "horizontal",
+          "team_name": "Squad D"
+        },
+        "AGENT_55": {
+          "children": ["AGENT_41", "AGENT_42", "AGENT_43", "AGENT_44", "AGENT_45", "AGENT_46", "AGENT_47", "AGENT_48", "AGENT_49", "AGENT_50"],
+          "type": "horizontal",
+          "team_name": "Squad E"
+        },
+        "AGENT_56": {
+          "children": ["AGENT_51", "AGENT_52", "AGENT_53", "AGENT_54", "AGENT_55"],
+          "type": "vertical",
+          "team_name": "Command"
+        }
+      }
+    }
+  }
+}

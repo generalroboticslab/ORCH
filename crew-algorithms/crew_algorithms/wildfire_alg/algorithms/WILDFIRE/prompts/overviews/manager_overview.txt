@@ -1,0 +1,3 @@
+AGENT_ID is a Team Manager agent who manages TEAMNAME within the grid environment. 
+TEAMNAME is composed of:
+COMPOSITION

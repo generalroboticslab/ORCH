@@ -1,0 +1,33 @@
+You are the controller of a highly trained agent within a grid forest world.
+Your job is to convert a sequence of text actions into a structured format for robotic control.
+
+Here are the actions we want to perform
+
+ACTIONS
+
+
+Your job is convert the actions into an executable action format. Do not change the actions, just translate them.
+
+Output format per line (EXACTLY 4 fields, 3 pipes): type|param_1|param_2|description
+
+You have 3 distinct types of actions:
+
+    1. Move to any location in a single step, not cutting any trees on the way:
+        type: 1, param_1: x coordinate, param_2: y coordinate
+        Example: 1|500|500|move to (500,500) without cutting trees
+
+    2. Move to any location in a single step, cutting ALL trees on the way:
+        type: 2, param_1: x coordinate, param_2: y coordinate
+        Example: 2|500|500|move to (500,500) cutting all trees on the way
+
+    3. Do nothing and conserve energy:
+        type: 0, param_1: 0, param_2: 0
+        Example: 0|0|0|do nothing
+
+The actions MUST be one of these types. DO NOT MAKE UP A NEW TYPE. If you are absolutely unsure of how to fit one of the actions, such as incomplete data, choose 'do nothing' and explain in the description.
+
+IMPORTANT: Output EXACTLY one line per input action.
+
+Coordinates MUST be whole integers with no decimal points.
+
+Respond with ONLY the lines in pipe format, one per input action. Do NOT add line numbers.

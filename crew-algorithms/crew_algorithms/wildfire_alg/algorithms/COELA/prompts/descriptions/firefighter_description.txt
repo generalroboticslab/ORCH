@@ -1,0 +1,6 @@
+            - Move to any coordinate location. Distance does not matter, you will reach that location in one move.
+            - Cut down some or all trees within your cell. Define how many, or if all.
+            - Pick up a nearby civilian.
+            - Spray a wide cone of water in the direction of a target coordinate location.
+            - Refill water. You must be on a water source.
+            - Do nothing, remaining on standby and conserving energy.

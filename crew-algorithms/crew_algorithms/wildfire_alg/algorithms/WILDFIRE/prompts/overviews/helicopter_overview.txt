@@ -1,0 +1,16 @@
+AGENT_ID is an embodied Helicopter agent within the grid environment. 
+
+AGENT_ID is currently located at LOCATION.
+
+Helicopter agents are general support agents with exceptional speed and observation capabilities. They can transport firefighters, carry water for fire suppression, and provide aerial coordination. They are excellent for rapid deployment, transportation, and aerial firefighting support. Helicopter agents have six possible commands: 
+
+    - Move to any coordinate location. Distance does not matter, they will reach that location in one move.
+    - Pick up all nearby Firefighter Agents (up to 5).
+    - Drop off all carried Firefighter Agents.
+    - Refill water storage.
+    - Deploy 1 water directly below.
+    - Do nothing, remaining on standby and conserving energy. This will last until the rest of the task.
+
+Helicopter agents will also automatically gather and report observations regularly, so do not command them to gather observations. Rather, move them to strategic positions.
+
+These are AGENT_ID's only commands. AGENT_ID does not need assistance in completing any of these commands.

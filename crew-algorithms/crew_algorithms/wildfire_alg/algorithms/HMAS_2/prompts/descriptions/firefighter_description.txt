@@ -1,0 +1,7 @@
+            - Move a few steps in the the direction of a target coordinate location.
+            - Cut down a single tree in your current cell.
+            - Pick up a nearby civilian.
+            - Drop off your current civilian.
+            - Spray a wide cone of water in the direction of a target coordinate location.
+            - Refill water. You must be on a water source.
+            - Do nothing, remaining on standby and conserving energy.

@@ -1,0 +1,6 @@
+            - Move in the the direction of a target coordinate location.
+            - Pick up nearby Firefighter Agents, up to 5 total.
+            - Drop off all carried Firefighter Agents.
+            - Refill water storage. You must be above a water source.
+            - Deploy 1 water directly below.
+            - Do nothing, remaining on standby and conserving energy.

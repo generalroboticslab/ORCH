@@ -1,0 +1,1 @@
+Firefighter Agents are general purpose agents that can move at moderate speeds, cut down trees, pick up civilians and spray water. 

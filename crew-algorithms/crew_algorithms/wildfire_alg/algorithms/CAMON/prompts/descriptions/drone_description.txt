@@ -1,0 +1,3 @@
+Drone Agents:
+            - Move in the direction of any target coordinate location, regardless of distance, observing along the way. They will arrive there in one step.
+            - Do nothing, remaining on standby and conserving energy.

@@ -1,0 +1,1 @@
+Helicopter Agents are general purpose support agents that excel at scouting, transporting firefighters, and dropping water.

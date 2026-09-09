@@ -1,0 +1,150 @@
+{
+  "knowledge_base": {
+
+    "Cut_Trees_Sparse_small": {
+      "information": [
+
+      ]
+    },
+    "Cut_Trees_Sparse_large": {
+      "information": [
+
+      ]
+    },
+
+    "Scout_Fire_small": {
+        "information": [
+            "You need at least two drones directly above the fire (ignited, on fire, or extinguishing cells) to 'scout' the fire",
+            "Confirm the fire as soon as it is spotted by any agent"
+        ]
+    },
+    "Scout_Fire_large": {
+        "information": [
+            "You need at least two drones directly above the fire (ignited, on fire, or extinguishing cells) to 'scout' the fire",
+            "Confirm the fire as soon as it is spotted by any agent"
+        ]
+    },
+
+    "Transport_Firefighters_small": {
+        "information": [
+          "Helicopters can carry up to 5 firefighters at a time"
+        ]
+      },
+      "Transport_Firefighters_large": {
+          "information": [
+            "Helicopters can carry up to 5 firefighters at a time"
+          ]
+        },
+
+    "Rescue_Civilians_Known_Location_small": {
+        "information": [
+            "Firefighters can only carry one civilian at a time",
+            "Civilians gradually wander on their own from their starting location every few steps"
+        ]
+    },
+    "Rescue_Civilians_Known_Location_large": {
+        "information": [
+            "Firefighters can only carry one civilian at a time",
+            "Firefighters must be within 4 cells of a civilian to pick up a civilian",
+            "Civilians gradually wander on their own from their starting location every few steps"
+        ]
+    },
+    
+    "Suppress_Fire_Contain": {
+      "information": [
+        "Firefighters and Bulldozers can be easily destroyed by fire, so keep them at least 5 cells away from any ignited, on fire, or extinguishing cell at all times",
+        "Do not let your firefighters or bulldozers move into or near a cell that is ignited, on fire, or extinguishing",
+        "Fire spreads from ignited cells to adjacent cells every few steps",
+        "An efficient firebreak is a continuous line of cells with no trees in them",
+        "To contain a fire, the fire needs to be fully surrounded by complete firebreaks or extinguished cells"
+      ]
+    },
+    "Suppress_Fire_Extinguish":{
+        "information": [
+            "Firefighters and Bulldozers can be easily destroyed by fire, so keep them at least 5 cells away from any ignited, on fire, or extinguishing cell at all times",
+            "Do not let your firefighters or bulldozers move into or near a cell that is ignited, on fire, or extinguishing",
+            "Fire spreads from ignited cells to adjacent cells every few steps",
+            "Spraying water on a cell extinguishes the fire in that cell, and creates a firebreak of wet cells",
+            "Firefighters and helicopters need to fill up with water at the water source before they can extinguish a fire"
+        ]
+    },
+    "Rescue_Civilians_Search_and_Rescue": {
+        "information": [
+            "Firefighters can only carry one civilian at a time",
+            "Firefighters must be within 4 cells of a civilian to pick up a civilian",
+            "Civilians gradually wander on their own from their starting location every few steps"
+        ]
+    },
+    "Suppress_Fire_Locate_and_Suppress": {
+        "information": [
+            "Firefighters and Bulldozers can be easily destroyed by fire, so keep them at least 5 cells away from any ignited, on fire, or extinguishing cell at all times",
+            "Do not let your firefighters or bulldozers move into or near a cell that is ignited, on fire, or extinguishing",
+            "Fire spreads from ignited cells to adjacent cells every few steps",
+            "Spraying water on a cell extinguishes the fire in that cell, and creates a firebreak of wet cells",
+            "An efficient firebreak is a continuous line of cells with no trees in them",
+            "Firefighters and helicopters need to fill up with water at the water source before they can extinguish a fire"
+
+        ]
+    },
+    "Suppress_Fire_Locate_Deploy_Suppress": {
+        "information": [
+            "Firefighters and Bulldozers can be easily destroyed by fire, so keep them at least 3 cells away from any ignited, on fire, or extinguishing cell at all times",
+            "Do not let your firefighters or bulldozers move into or near a cell that is ignited, on fire, or extinguishing",
+            "Fire spreads from ignited cells to adjacent cells every few steps",
+            "Spraying water on a cell extinguishes the fire in that cell, and creates a firebreak of wet cells",
+            "Helicopters can carry up to 5 firefighters at a time",
+            "An efficient firebreak is a continuous line of cells with no trees in them",
+            "Firefighters and helicopters need to fill up with water at the water source before they can extinguish a fire"
+        ]
+    },
+    "Rescue_Civilians_Search_Rescue_Transport":{
+        "information": [
+            "Firefighters can only carry one civilian at a time",
+            "Firefighters must be within 4 cells of a civilian to pick up a civilian",
+            "Civilians gradually wander on their own from their starting location every few steps",
+            "Helicopters can carry up to 5 firefighters at a time",
+            "Helicopters can not pick up civilians directly, but can pick up and deploy firefighters with civilians"
+
+        ]
+    },
+    "Full_Game":{
+        "information": [
+            "Firefighters and Bulldozers can be easily destroyed by fire, so keep them at least 3 cells away from any ignited, on fire, or extinguishing cell at all times",
+            "Do not let your firefighters or bulldozers move into or near a cell that is ignited, on fire, or extinguishing",
+            "Fire spreads from ignited cells to adjacent cells every few steps",
+            "An efficient firebreak is a continuous line of cells with no trees in them",
+            "To contain a fire, the fire needs to be fully surrounded by complete firebreaks or extinguished cells",
+            "Spraying water on a cell extinguishes the fire in that cell, and creates a firebreak of wet cells",
+            "Helicopters can carry up to 5 firefighters at a time",
+            "Helicopters can not pick up civilians directly, but can pick up and deploy firefighters with civilians",
+            "Firefighters can only carry one civilian at a time",
+            "Firefighters and helicopters need to fill up with water at the water source before they can extinguish a fire"
+        ]
+    },
+    "general": {
+        "information": [
+            "You need at least two drones directly above the fire (ignited, on fire, or extinguishing cells) to 'scout' the fire",
+            "Confirm fires as soon as it is spotted by any agent",
+            "Firefighters can only carry one civilian or up to 5 water at a time",
+            "Firefighters must be within 4 cells of a civilian to pick up a civilian",
+            "Civilians gradually wander on their own from their starting location, so prepare to adapt and search for them",
+            "Helicopters can carry up to 5 firefighters at a time",
+            "Helicopters can not pick up civilians directly, but can pick up and deploy firefighters with civilians",
+            "Firefighters and Helicopters need to fill up with water at the water source before they can extinguish a fire",
+            "Do not refill water until you are fully out of water.",
+            "Spraying water in the same place twice is redundant and a waste of water.",
+            "Firefighters and Bulldozers can be easily destroyed by fire, so keep them at least 5 cells away from any ignited, on fire, or extinguishing cell at all times",
+            "Do not let your firefighters or bulldozers move into, through, or near a cell that is ignited, on fire, or extinguishing",
+            "DO NOT LOSE YOUR FIREFIGHTERS OR BULLDOZERS",
+            "Fire spreads from ignited cells to adjacent cells every few steps",
+            "Spraying water on a cell extinguishes the fire in that cell, and creates a firebreak of wet cells",
+            "An efficient firebreak is a continuous line INCLUDING CORNERS of cells with no trees in them",
+            "To contain a fire, the fire needs to be fully surrounded by complete firebreaks or extinguished cells ON ALL SIDES"
+
+        ]
+    }
+
+
+   
+  }
+} 
