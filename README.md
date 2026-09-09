@@ -1,4 +1,4 @@
-# CREW: Platform for Human-AI Teaming
+# ORCH: Organizational principles enable collective intelligence in embodied AI
 
 [![docs badge](https://img.shields.io/badge/docs-reference-blue.svg)](https://generalroboticslab.github.io/crew-docs/)
 [![license badge](https://img.shields.io/badge/license-Apache--2.0-green.svg)](LICENSE)
