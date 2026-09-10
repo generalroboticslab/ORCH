@@ -183,9 +183,9 @@ wildfire-human-interface/*
 /crew-algorithms/crew_algorithms/wildfire_alg/data/pregenerated_team_configs/*
 /crew-algorithms/crew_algorithms/wildfire_alg/team_configs/*
 
-/outputs/*
-/UnityLogs/*
-/tmp/*
+outputs/*
+UnityLogs/*
+tmp/*
 /Experiment_Pipeline/*
 /Data/*
 /wandb/*
