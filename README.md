@@ -32,11 +32,8 @@ By working in unison, these two subcomponents create a robust and user-friendly 
 
 # Acknowledgments
 
-We thank members of the General Robotics Lab at Duke University for helpful discussions and suggestions.
+This work is supported by the ARL STRONG program under awards W911NF2320182, W911NF2220113, and W911NF242021; the DARPA TIAMAT program under award HR00112490419; and ARO under award W911NF2410405.
 
-**Funding:** This work is supported by the ARL STRONG program under awards W911NF2320182, W911NF2220113, and W911NF242021; the DARPA TIAMAT program under award HR00112490419; and ARO under award W911NF2410405.
-
-**Author Contributions:** B.C., Z.J., and J.H. conceived and designed the research. Z.J. and J.H. designed simulations and performed experiments. Z.J., J.H., and B.C. analyzed the data. Z.J. and B.C. wrote the manuscript. All authors provided feedback.
 
 # Citation
 ```
