@@ -166,8 +166,8 @@ cython_debug/
 /outputs/*
 
 # Exclude crew-dojo except Builds folder
-crew-dojo/*
-!crew-dojo/Builds/
+crew-dojo/Builds/
+crew-dojo/Unity/*
 
 # Exclude wildfire-human-interface except what's needed for Docker
 wildfire-human-interface/*

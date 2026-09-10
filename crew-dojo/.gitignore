@@ -1,0 +1,7 @@
+Site/*
+Builds/*
+Unity_clone**
+Unity/*.log
+Unity/Recording
+Unity/.vscode
+.vscode/*
