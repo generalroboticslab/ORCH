@@ -193,3 +193,10 @@ wildfire-human-interface/*
 .DS_Store
 .claude/
 /archive/zj90/CREW-dev/CLAUDE.md
+
+outputs/*
+
+UnityLogs/*
+wildfire-human-interface/*
+tests/*
+Data/*
