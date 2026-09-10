@@ -1,6 +1,6 @@
 # ORCH: Organizational principles enable collective intelligence in embodied AI
 
-![ORCH Demo](ORCH%20Website%20Long%20Gif.gif)
+![ORCH Demo](assests/ORCH%20Website%20Long%20Gif.gif)
 
 [![license badge](https://img.shields.io/badge/license-Apache--2.0-green.svg)](LICENSE)
 
@@ -13,22 +13,8 @@ Collective intelligence depends not only on the capabilities of individual membe
 
 Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
-# Overview
-
-CREW consists of two main subcomponents: Dojo and Algorithms. These subcomponents work together to create an efficient platform for developers and researchers alike.
-
-Dojo serves as a Unity package designed specifically to facilitate the development of multiplayer games involving human and AI players. We provide a set of pre-built environments as well as a template for building custom tasks with real-time interaction enabled.
-
-Algorithms, on the other hand, is a Python package aimed at researchers who wish to create AI agents capable of operating and collaborating with humans within the environments established by Dojo. Offering an intuitive interface, Algorithms ensures maximum flexibility and customizability for the researchers.
-
-By working in unison, these two subcomponents create a robust and user-friendly platform for the development of interactive experiences.
-
 # Result
-![ORCH_Result](Aggregated%20Result%20by%20Algorithm.png)
-![ORCH_Result](Aggregated%20Result%20by%20Model.png)
-
-# Visualization
-![ORCH_Visual](Visualization.png)
+![ORCH_Result](assests/Aggregated%20Result%20by%20Algorithm.png)
 
 # Acknowledgments
 
