@@ -25,6 +25,7 @@ By working in unison, these two subcomponents create a robust and user-friendly 
 
 # Result
 ![ORCH_Result](Aggregated%20Result%20by%20Algorithm.png)
+![ORCH_Result](Aggregated%20Result%20by%20Model.png)
 
 
 # Citation
