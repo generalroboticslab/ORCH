@@ -23,6 +23,9 @@ Algorithms, on the other hand, is a Python package aimed at researchers who wish
 
 By working in unison, these two subcomponents create a robust and user-friendly platform for the development of interactive experiences.
 
+# Result
+![ORCH_Result](Aggregated_Result_by_Algorithm.pdf)
+
 
 # Citation
 ```
