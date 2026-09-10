@@ -1,6 +1,6 @@
 # ORCH: Organizational principles enable collective intelligence in embodied AI
 
-![crew teaser](./assets/crew-teaser.jpg)
+![ORCH Demo](ORCH%20Website%20Long%20Gif.gif)
 
 [![license badge](https://img.shields.io/badge/license-Apache--2.0-green.svg)](LICENSE)
 
@@ -9,7 +9,7 @@
 Collective intelligence depends not only on the capabilities of individual members, but also on how those members are organized. Yet artificial multi-agent systems are typically assembled using fixed organizational structures, even when the physical tasks they perform impose fundamentally different coordination requirements. Here we show that principles from human organization theory can be operationalized to organize large, heterogeneous collectives of embodied artificial agents. We introduce \projectname (Organizing Roles and Coordination Hierarchies), which constructs task-specific hierarchical organizations by combining pooled interdependence for work that can proceed concurrently with sequential interdependence for work governed by prerequisite relationships. Across 25 wildfire-response missions spanning reconnaissance, rescue, transportation, resource management, containment and suppression, we evaluated teams of up to 50 heterogeneous agents using eight large language models. Organizations constructed using these principles consistently outperformed four representative embodied multi-agent approaches across mission outcome, execution efficiency, exploration and computational resource use. Human-designed ORCH organizations improved final score by 63.97\% and execution efficiency by 74.29\% on average relative to the four prior frameworks. Organizations generated automatically by language models improved these measures by 43.63\% and 52.53\%, respectively. These advantages persisted across missions and underlying language models. Notably, collective performance was not monotonically determined by model scale. Analysis of long-horizon missions showed that hierarchical organization enabled teams to preserve concurrent activity within specialized groups while coordinating ordered transitions between mission phases. These results establish organizational design as a fundamental dimension of artificial collective intelligence and suggest that principles developed to understand human organizations can guide the construction of scalable embodied AI collectives.
 
 # Authors
-[Zhengran Ji](https://jzr01.github.io/),, [Jonathan Hyun](https://www.linkedin.com/in/jonathan-hyun-21617b294/), [Boyuan Chen](http://boyuanchen.com/).
+[Zhengran Ji](https://jzr01.github.io/), [Jonathan Hyun](https://www.linkedin.com/in/jonathan-hyun-21617b294/), [Boyuan Chen](http://boyuanchen.com/).
 
 Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
