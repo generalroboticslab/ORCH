@@ -14,7 +14,7 @@ Collective intelligence depends not only on the capabilities of individual membe
 Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
 # Result
-![ORCH_Result](assests/Aggregated%20Result%20by%20Algorithm.png)
+![ORCH_Result](assets/Aggregated%20Result%20by%20Algorithm.png)
 
 # Acknowledgments
 
