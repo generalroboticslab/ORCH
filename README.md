@@ -1,6 +1,6 @@
 # ORCH: Organizational principles enable collective intelligence in embodied AI
 
-![ORCH Demo](assests/ORCH%20Website%20Long%20Gif.gif)
+![ORCH Demo](assets/ORCH%20Website%20Long%20Gif.gif)
 
 [![license badge](https://img.shields.io/badge/license-Apache--2.0-green.svg)](LICENSE)
 
