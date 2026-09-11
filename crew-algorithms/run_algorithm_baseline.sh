@@ -15,15 +15,15 @@ PRESETS=(
   "Suppress_Fire_Locate_and_Suppress"
   "Suppress_Fire_Locate_Deploy_Suppress"
   "Rescue_Civilians_Search_Rescue_Transport"
-  # "Full_Game"
+  "Full_Game"
   "Scout_Fire_Drone_Lost"
   "Transport_Helicopter_Down"
   "Rescue_Civilians_Surprise"
   "Suppress_Fire_Extinguish_Second_Fire"
   "Suppress_Fire_Contain_Water_Source"
   "Suppress_Fire_Extinguish_Rapid_Growth"
-  # "Scale_Level_Simple"
-  # "Scale_Level_Complex"
+  "Scale_Level_Simple"
+  "Scale_Level_Complex"
 )
 
 declare -A SEEDS
@@ -54,7 +54,7 @@ SEEDS["Scale_Level_Simple"]="42 137 256 503 819"
 SEEDS["Scale_Level_Complex"]="42 137 256 503 819"
 
 
-MODEL="kimi"
+MODEL="qwen"
 URL="http://localhost:8000/v1"
 
 # GPU 5 is disabled here.
