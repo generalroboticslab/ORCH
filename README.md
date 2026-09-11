@@ -22,6 +22,11 @@ git clone https://github.com/generalroboticslab/ORCH.git
 ## 2. Install the CREW-WildFire Environment 
 
 Install the CREW-WildFire environment  following [this instruction](https://generalroboticslab.github.io/wildfire-docs/getting-started/quick-installation/).
+After download the zip file, unzip it and put the Wildfire-StandaloneLinux64-Server folder into path
+
+```
+ORCH/crew-dojo/Builds/
+```
 
 ## 3. Download the game build
 
