@@ -8,6 +8,15 @@
 
 # Get Started
 
+## 1. Install the CREW-WildFire Environment 
+
+## 2. Download the Environment 
+
+## 3. Configure the LLM you are going to use 
+
+## 4. Run the experiment 
+
+## 5. Check the result
 
 # Authors
 [Zhengran Ji](https://jzr01.github.io/), [Jonathan Hyun](https://www.linkedin.com/in/jonathan-hyun-21617b294/), [Boyuan Chen](http://boyuanchen.com/).
