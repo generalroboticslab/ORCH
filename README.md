@@ -10,6 +10,8 @@
 
 ## 1. Install the CREW-WildFire Environment 
 
+Install the CREW-WildFire environment by following [this instruction](https://generalroboticslab.github.io/wildfire-docs/getting-started/quick-installation/)
+
 ## 2. Download the Environment 
 
 ## 3. Configure the LLM you are going to use 
