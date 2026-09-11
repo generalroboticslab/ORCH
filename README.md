@@ -33,7 +33,7 @@ ORCH/crew-dojo/Builds/
 
 ## 4. Configure the LLM you are going to use 
 
-Make your chosen model available through an API or a running local model server. Configure `envs.llm_model` and `envs.llm_url` for the provider and endpoint, and supply the required API key. For the `gpt` provider, set `OPENAI_API_KEY`. Review the model names in [the wildfire configuration](crew-algorithms/crew_algorithms/wildfire_alg/config/configs.py) to ensure they match the models available to you.
+You can either use api services provided such as openai api or host local model and inference it.
 
 ## 5. Run the experiment 
 
