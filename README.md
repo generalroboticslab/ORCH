@@ -31,6 +31,33 @@ bash run_ORCH.sh
 
 ## 5. Check the result
 
+When you run `bash run_ORCH.sh` from `crew-algorithms`, outputs are saved in the following locations (paths below are relative to the repository root).
+
+**Experiment console logs** are saved separately for each model, mission, and seed:
+
+```text
+crew-algorithms/experiment_logs/<MODEL>/WILDFIRE/<LEVEL>/seed<SEED>.log
+```
+
+These files capture standard output and errors, including the run configuration and completion or failure status. Start here when checking progress or troubleshooting a run. Running the same model, mission, and seed again overwrites its console log.
+
+**Results and detailed agent logs** are saved in a timestamped directory for each run:
+
+```text
+crew-algorithms/crew_algorithms/wildfire_alg/results/logs/WILDFIRE/<MODEL>/<TEAM_GENERATION_TYPE>/<LEVEL>/<SEED>/<TIMESTAMP>/
+```
+
+For `run_ORCH.sh`, `<TEAM_GENERATION_TYPE>` is `preset` because the script supplies a team configuration. `<TIMESTAMP>` uses the format `YYYY-MM-DD-HH-MM-SS`.
+
+| File within the run directory | Contents |
+| --- | --- |
+| `data.csv` | Per-timestep mission metrics, including exploration, rescues, fire suppression, agent losses, cumulative API calls, token usage, cost, and time. |
+| `master_logs/master_log_*.txt` | Human-readable log of agent events and coordination. |
+| `master_logs/master_log_*.json` | Structured version of the master event log for analysis. |
+| `Agent_<ID>/chats.txt` | Individual agent conversation logs, written as messages are recorded. |
+
+For example, a `kimi` run of `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/kimi/WILDFIRE/Scout_Fire_small/seed4651.log` and its results under `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/WILDFIRE/kimi/preset/Scout_Fire_small/4651/<TIMESTAMP>/`.
+
 # Authors
 [Zhengran Ji](https://jzr01.github.io/), [Jonathan Hyun](https://www.linkedin.com/in/jonathan-hyun-21617b294/), [Boyuan Chen](http://boyuanchen.com/).
 
