@@ -22,6 +22,8 @@ Make your chosen model available through an API or a running local model server.
 
 ## 4. Run the experiment 
 
+From `crew-algorithms`, configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run:
+
 ```
 conda activate crew
 bash run_ORCH.sh
