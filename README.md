@@ -23,12 +23,15 @@ This work is supported by the ARL STRONG program under awards W911NF2320182, W91
 
 # Citation
 ```
-@inproceedings{zhang2024crew,
-  title={CREW: Facilitating Human-AI Teaming Research},
-  author={Zhang, Lingyu and Ji, Zhengran and Chen, Boyuan},
-  booktitle={Preprint},
-  year={2024}
-}  
+@misc{ji2026orchorganizationalprinciplesenable,
+      title={ORCH: Organizational Principles Enable Collective Intelligence in Embodied AI},
+      author={Zhengran Ji and Jonathan Hyun and Boyuan Chen},
+      year={2026},
+      eprint={2609.11737},
+      archivePrefix={arXiv},
+      primaryClass={cs.MA},
+      url={https://arxiv.org/abs/2609.11737},
+}
 ```
 
 
