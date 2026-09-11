@@ -13,19 +13,25 @@ Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
 # Get Started
 
-## 1. Install the CREW-WildFire Environment 
+## 1. Clone this repo
+
+```
+git clone https://github.com/generalroboticslab/ORCH.git
+```
+
+## 2. Install the CREW-WildFire Environment 
 
 Install the CREW-WildFire environment  following [this instruction](https://generalroboticslab.github.io/wildfire-docs/getting-started/quick-installation/).
 
-## 2. Download the game build
+## 3. Download the game build
 
 Download the game build at [here](https://drive.google.com/file/d/1TPkYg6dqn1-BVt_Jr2bpITzqNsL_gxGO/view?usp=sharing).
 
-## 3. Configure the LLM you are going to use 
+## 4. Configure the LLM you are going to use 
 
 Make your chosen model available through an API or a running local model server. Configure `envs.llm_model` and `envs.llm_url` for the provider and endpoint, and supply the required API key. For the `gpt` provider, set `OPENAI_API_KEY`. Review the model names in [the wildfire configuration](crew-algorithms/crew_algorithms/wildfire_alg/config/configs.py) to ensure they match the models available to you.
 
-## 4. Run the experiment 
+## 5. Run the experiment 
 
 From `crew-algorithms`, configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run:
 
@@ -34,7 +40,7 @@ conda activate crew
 bash run_ORCH.sh
 ```
 
-## 5. Check the result
+## 6. Check the result
 
 When you run `bash run_ORCH.sh` from `crew-algorithms`, outputs are saved in the following locations (paths below are relative to the repository root).
 
