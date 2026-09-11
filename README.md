@@ -10,15 +10,22 @@
 
 ## 1. Install the CREW-WildFire Environment 
 
-Install the CREW-WildFire environment  following [this instruction](https://generalroboticslab.github.io/wildfire-docs/getting-started/quick-installation/)
+Install the CREW-WildFire environment  following [this instruction](https://generalroboticslab.github.io/wildfire-docs/getting-started/quick-installation/).
 
 ## 2. Download the game build
 
-Download the game build at [here](https://drive.google.com/file/d/1TPkYg6dqn1-BVt_Jr2bpITzqNsL_gxGO/view?usp=sharing)
+Download the game build at [here](https://drive.google.com/file/d/1TPkYg6dqn1-BVt_Jr2bpITzqNsL_gxGO/view?usp=sharing).
 
 ## 3. Configure the LLM you are going to use 
 
+
+
 ## 4. Run the experiment 
+
+```bash
+   conda activate crew
+   bash run_ORCH.sh
+   ```
 
 ## 5. Check the result
 
