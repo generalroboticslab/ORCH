@@ -6,6 +6,11 @@
 
 [Project Website](http://www.generalroboticslab.com/ORCH) | [Video](https://www.youtube.com/watch?v=RINSo3uI0dI) | [Paper](https://arxiv.org/abs/2408.00170)
 
+# Authors
+[Zhengran Ji](https://jzr01.github.io/), [Jonathan Hyun](https://www.linkedin.com/in/jonathan-hyun-21617b294/), [Boyuan Chen](http://boyuanchen.com/).
+
+Duke University, [General Robotics Lab](http://generalroboticslab.com/)
+
 # Get Started
 
 ## 1. Install the CREW-WildFire Environment 
@@ -56,12 +61,8 @@ For `run_ORCH.sh`, `<TEAM_GENERATION_TYPE>` is `preset` because the script suppl
 | `master_logs/master_log_*.json` | Structured version of the master event log for analysis. |
 | `Agent_<ID>/chats.txt` | Individual agent conversation logs, written as messages are recorded. |
 
-For example, a `kimi` run of `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/kimi/WILDFIRE/Scout_Fire_small/seed4651.log` and its results under `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/WILDFIRE/kimi/preset/Scout_Fire_small/4651/<TIMESTAMP>/`.
+For example, a `gpt` run of `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/gpt/WILDFIRE/Scout_Fire_small/seed4651.log` and its results under `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/WILDFIRE/gpt/preset/Scout_Fire_small/4651/<TIMESTAMP>/`.
 
-# Authors
-[Zhengran Ji](https://jzr01.github.io/), [Jonathan Hyun](https://www.linkedin.com/in/jonathan-hyun-21617b294/), [Boyuan Chen](http://boyuanchen.com/).
-
-Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
 # Result
 ![ORCH_Result](assets/Aggregated%20Result%20by%20Algorithm.png)
