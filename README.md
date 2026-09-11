@@ -19,23 +19,59 @@ Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 git clone https://github.com/generalroboticslab/ORCH.git
 ```
 
-## 2. Install the CREW-WildFire Environment 
+## 2. Install the crew conda environment and launch the Docker image
 
 Install the CREW-WildFire environment  following [this instruction](https://generalroboticslab.github.io/wildfire-docs/getting-started/quick-installation/).
 
 ## 3. Download the game build
 
-Download the game build at [here](https://drive.google.com/file/d/1TPkYg6dqn1-BVt_Jr2bpITzqNsL_gxGO/view?usp=sharing). After download the zip file, unzip it and put the Wildfire-StandaloneLinux64-Server folder into path
+Download the game build at [here](https://drive.google.com/file/d/1TPkYg6dqn1-BVt_Jr2bpITzqNsL_gxGO/view?usp=sharing). After downloading the zip file, unzip it and put the Wildfire-StandaloneLinux64-Server folder into the path:
 
 ```
 ORCH/crew-dojo/Builds/
 ```
 
-## 4. Configure the LLM you are going to use 
-
-You can either use api services provided such as openai api or host local model and inference it.
 
 ## 5. Run the experiment 
+
+### LLM Usage
+
+You can use an API service such as the OpenAI API or host a model locally for inference.
+
+#### Using the OpenAI API
+
+To use GPT models through the OpenAI API, configure the following:
+
+- **Model:** `gpt`
+- **API base URL:** `https://api.openai.com/v1`
+- **API key:** Set the `OPENAI_API_KEY` environment variable:
+
+```bash
+export OPENAI_API_KEY="your-openai-api-key"
+```
+
+#### Using a Locally Hosted Model
+
+Host your model with an OpenAI-compatible API server and configure the API base URL to point to your server, for example:
+
+```text
+http://localhost:8000/v1
+```
+
+If you use one of the models tested in our paper, enable API-key authentication when starting the server. Set the corresponding environment variable using the model name in uppercase, followed by `_API_KEY`:
+
+```bash
+export <MODEL_NAME>_API_KEY="your-local-api-key"
+```
+
+For example, for a Qwen model:
+
+```bash
+export QWEN_API_KEY="your-local-api-key"
+```
+
+The key must match the API key configured on your model server.
+
 
 From `crew-algorithms`, configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run:
 
