@@ -22,10 +22,11 @@ Download the game build at [here](https://drive.google.com/file/d/1TPkYg6dqn1-BV
 
 ## 4. Run the experiment 
 
-```bash
-   conda activate crew
-   bash run_ORCH.sh
-   ```
+```
+bash
+conda activate crew
+bash run_ORCH.sh
+```
 
 ## 5. Check the result
 
