@@ -190,7 +190,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1 and sys.argv[1] == "--all":
         # Generate videos for all runs
-        data_root = Path(__file__).parent.parent / "algorithms" / "WILDFIRE" / "results" / "data"
+        data_root = Path(__file__).parent.parent / "algorithms" / "ORCH" / "results" / "data"
         generate_all_videos(data_root)
     else:
         # Single folder mode

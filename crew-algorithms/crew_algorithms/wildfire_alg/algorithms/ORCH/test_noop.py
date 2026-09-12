@@ -1,11 +1,11 @@
 """
-WILDFIRE No-Op Test Script
+ORCH No-Op Test Script
 
-Runs the WILDFIRE algorithm with all agents doing nothing (idle actions)
+Runs the ORCH algorithm with all agents doing nothing (idle actions)
 while maintaining normal logging for debugging and testing purposes.
 
 Usage:
-    python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE.test_noop envs.level=Demo_Level envs.seed=42
+    python -m crew_algorithms.wildfire_alg.algorithms.ORCH.test_noop envs.level=Demo_Level envs.seed=42
 """
 
 import hydra
@@ -29,11 +29,11 @@ from typing import Dict, List, Any, Tuple
 import torch
 from crew_algorithms.envs.channels import ToggleTimestepChannel
 from crew_algorithms.wildfire_alg.core.utils import make_env
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.worker_agent import WorkerAgent
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import Option, generate_graph
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.master_logger import init_master_logger, get_master_logger
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.agent import Agent
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.horizontal_manager_agent import HorizontalManagerAgent
+from crew_algorithms.wildfire_alg.algorithms.ORCH.worker_agent import WorkerAgent
+from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import Option, generate_graph
+from crew_algorithms.wildfire_alg.algorithms.ORCH.master_logger import init_master_logger, get_master_logger
+from crew_algorithms.wildfire_alg.algorithms.ORCH.agent import Agent
+from crew_algorithms.wildfire_alg.algorithms.ORCH.horizontal_manager_agent import HorizontalManagerAgent
 import uuid
 
 
@@ -145,7 +145,7 @@ async def async_test_noop(cfg: Config):
     Runs the environment with all agents doing nothing.
     """
     print("=" * 60)
-    print("WILDFIRE NO-OP TEST")
+    print("ORCH NO-OP TEST")
     print("All agents will remain idle - no LLM calls")
     print("=" * 60)
 
@@ -165,7 +165,7 @@ async def async_test_noop(cfg: Config):
     device = "cpu" if not torch.has_cuda else "cuda:0"
     toggle_timestep_channel = ToggleTimestepChannel(uuid.uuid4())
 
-    cfg.envs.algorithm = 'WILDFIRE'
+    cfg.envs.algorithm = 'ORCH'
     level = cfg.envs.level
     seed = cfg.envs.seed
 
@@ -195,7 +195,7 @@ async def async_test_noop(cfg: Config):
     os.environ["SSL_CERT_FILE"] = certifi.where()
     api_key = os.environ.get('OPENAI_API_KEY', 'dummy_key_noop_test')
 
-    path = os.path.join("results", "logs", "WILDFIRE_NOOP", level, str(seed), cfg.envs.timestamp)
+    path = os.path.join("results", "logs", "ORCH_NOOP", level, str(seed), cfg.envs.timestamp)
     os.makedirs(path, exist_ok=True)
 
     # Initialize master logger
@@ -380,7 +380,7 @@ async def async_test_noop(cfg: Config):
         print(f"[NOOP] Warning: Failed to close master logger: {e}")
 
     print("=" * 60)
-    print("WILDFIRE NO-OP TEST COMPLETE")
+    print("ORCH NO-OP TEST COMPLETE")
     print(f"Results saved to: {path}")
     print(f"  - data.csv: {csv_filename}")
     print(f"  - Master logs: {path}/master_logs/")

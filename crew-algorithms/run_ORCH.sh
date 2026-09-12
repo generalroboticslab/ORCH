@@ -1,27 +1,27 @@
 PRESETS=(
   "Cut_Trees_Sparse_small"
-  "Cut_Trees_Sparse_large"
-  "Cut_Trees_Lines_small"
-  "Cut_Trees_Lines_large"
-  "Scout_Fire_small"
-  "Scout_Fire_large"
-  "Transport_Firefighters_small"
-  "Transport_Firefighters_large"
-  "Rescue_Civilians_Known_Location_small"
-  "Rescue_Civilians_Known_Location_large"
-  "Suppress_Fire_Contain"
-  "Suppress_Fire_Extinguish"
-  "Rescue_Civilians_Search_and_Rescue"
-  "Suppress_Fire_Locate_and_Suppress"
-  "Suppress_Fire_Locate_Deploy_Suppress"
-  "Rescue_Civilians_Search_Rescue_Transport"
-  # "Full_Game"
-  "Scout_Fire_Drone_Lost"
-  "Transport_Helicopter_Down"
-  "Rescue_Civilians_Surprise"
-  "Suppress_Fire_Extinguish_Second_Fire"
-  "Suppress_Fire_Contain_Water_Source"
-  "Suppress_Fire_Extinguish_Rapid_Growth"
+  # "Cut_Trees_Sparse_large"
+  # "Cut_Trees_Lines_small"
+  # "Cut_Trees_Lines_large"
+  # "Scout_Fire_small"
+  # "Scout_Fire_large"
+  # "Transport_Firefighters_small"
+  # "Transport_Firefighters_large"
+  # "Rescue_Civilians_Known_Location_small"
+  # "Rescue_Civilians_Known_Location_large"
+  # "Suppress_Fire_Contain"
+  # "Suppress_Fire_Extinguish"
+  # "Rescue_Civilians_Search_and_Rescue"
+  # "Suppress_Fire_Locate_and_Suppress"
+  # "Suppress_Fire_Locate_Deploy_Suppress"
+  # "Rescue_Civilians_Search_Rescue_Transport"
+  # # "Full_Game"
+  # "Scout_Fire_Drone_Lost"
+  # "Transport_Helicopter_Down"
+  # "Rescue_Civilians_Surprise"
+  # "Suppress_Fire_Extinguish_Second_Fire"
+  # "Suppress_Fire_Contain_Water_Source"
+  # "Suppress_Fire_Extinguish_Rapid_Growth"
   # "Scale_Level_Simple"
   # "Scale_Level_Complex"
 )
@@ -83,12 +83,12 @@ TEAM_CONFIGS["Suppress_Fire_Extinguish_Rapid_Growth"]='++envs.team_config={human
 TEAM_CONFIGS["Scale_Level_Simple"]='++envs.team_config={humans: [], managers: {51: {children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], type: "horizontal", team_name: "Squad A"}, 52: {children: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20], type: "horizontal", team_name: "Squad B"}, 53: {children: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30], type: "horizontal", team_name: "Squad C"}, 54: {children: [31, 32, 33, 34, 35, 36, 37, 38, 39, 40], type: "horizontal", team_name: "Squad D"}, 55: {children: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50], type: "horizontal", team_name: "Squad E"}, 56: {children: [51, 52, 53, 54, 55], type: "horizontal", team_name: "Command"}}}'
 TEAM_CONFIGS["Scale_Level_Complex"]='++envs.team_config={humans: [], managers: {51: {children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], type: "horizontal", team_name: "Squad A"}, 52: {children: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20], type: "horizontal", team_name: "Squad B"}, 53: {children: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30], type: "horizontal", team_name: "Squad C"}, 54: {children: [31, 32, 33, 34, 35, 36, 37, 38, 39, 40], type: "horizontal", team_name: "Squad D"}, 55: {children: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50], type: "horizontal", team_name: "Squad E"}, 56: {children: [51, 52, 53, 54, 55], type: "vertical", team_name: "Command"}}}'
 
-MODEL="kimi"
+MODEL="gemma"
 URL="http://localhost:8000/v1"
 GPU_IDS=(0 1 2 3 4 6 7)  # GPU 5 is disabled here.
 NUM_GPUS=${#GPU_IDS[@]}
-ALGOS=("WILDFIRE")
-MAX_JOBS=5
+ALGOS=("ORCH")
+MAX_JOBS=1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_DIR="$SCRIPT_DIR/experiment_logs/${MODEL}"

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate pregenerated team configs using WILDFIRE LLM utilities.
+"""Generate pregenerated team configs using ORCH LLM utilities.
 
 This script uses the same LLM helper functions from
-`crew_algorithms/wildfire_alg/algorithms/WILDFIRE/utils.py` to generate team
+`crew_algorithms/wildfire_alg/algorithms/ORCH/utils.py` to generate team
 hierarchies and convert them into preset-style team configs.
 
 Generated files are written under:
@@ -49,13 +49,13 @@ class TeamStructureConversionError(ValueError):
 
 def load_wildfire_utils():
     try:
-        from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import (
+        from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import (
             generate_mission_description_from_config,
             generate_team_structure_with_llm,
         )
     except ImportError as e:
         raise RuntimeError(
-            "Unable to import WILDFIRE utils. Make sure the package dependencies are installed, "
+            "Unable to import ORCH utils. Make sure the package dependencies are installed, "
             "including the `openai` package for LLM generation."
         ) from e
     return generate_mission_description_from_config, generate_team_structure_with_llm
@@ -291,8 +291,8 @@ def generate_for_level(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate pregenerated WILDFIRE team configs via LLM utilities")
-    parser.add_argument("--model", "-m", required=True, help="LLM model name used by WILDFIRE utils (gpt, qwen, gemma, glm, llama, deepseek)")
+    parser = argparse.ArgumentParser(description="Generate pregenerated ORCH team configs via LLM utilities")
+    parser.add_argument("--model", "-m", required=True, help="LLM model name used by ORCH utils (gpt, qwen, gemma, glm, llama, deepseek)")
     parser.add_argument("--model-name", help="Exact model name to use for team generation and critique")
     parser.add_argument(
         "--reasoning-effort",

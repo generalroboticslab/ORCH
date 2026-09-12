@@ -10,7 +10,7 @@ from scipy import stats
 DATA_DIR = (
     Path(__file__).parent.parent
     / "algorithms"
-    / "WILDFIRE"
+    / "ORCH"
     / "results"
     / "experiment_data"
     / "FINAL"
@@ -18,10 +18,10 @@ DATA_DIR = (
 NOOP_DIR = (
     Path(__file__).parent.parent
     / "algorithms"
-    / "WILDFIRE"
+    / "ORCH"
     / "results"
     / "experiment_data"
-    / "WILDFIRE_NOOP"
+    / "ORCH_NOOP"
 )
 PLOT_DIR = Path(__file__).parent / "plots"
 
@@ -195,7 +195,7 @@ def load_all_runs():
 
 
 def load_noop_runs():
-    """Walk WILDFIRE_NOOP/ and load latest data.csv per seed, tagged by level."""
+    """Walk ORCH_NOOP/ and load latest data.csv per seed, tagged by level."""
     runs = defaultdict(list)
     if not NOOP_DIR.exists():
         return runs

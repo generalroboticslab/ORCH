@@ -1031,7 +1031,7 @@ def _collect_team_feedback(self, plan: str, global_data: dict) -> Dict[str, str]
                 agent_type = agent_type_map.get(agent.type, "firefighter")
             
             try:
-                child_feedback_path = os.path.join("algorithms", "WILDFIRE", "prompts", "child_feedback", f"{agent_type}_child_feedback.txt")
+                child_feedback_path = os.path.join("algorithms", "ORCH", "prompts", "child_feedback", f"{agent_type}_child_feedback.txt")
                 with open(child_feedback_path, 'r') as file:
                     child_system_prompt = file.read()
                 file.close()
@@ -1715,7 +1715,7 @@ def request_options(agent, global_data: dict) -> OptionSequence:
     
     
     try:
-        prompt_path = os.path.join("algorithms", "WILDFIRE", "prompts", "planner", f"{agent_type_string}_planner.txt")
+        prompt_path = os.path.join("algorithms", "ORCH", "prompts", "planner", f"{agent_type_string}_planner.txt")
         with open(prompt_path, 'r') as file:
             prompt_content = file.read()
     except FileNotFoundError:
@@ -1881,7 +1881,7 @@ Respond using the following tag format for each action:
 Include one <option> block for each action."""
 
     # Load translator prompt
-    prompt_path = os.path.join("algorithms", "WILDFIRE", "prompts", "translator", f"{type_string}_translator.txt")
+    prompt_path = os.path.join("algorithms", "ORCH", "prompts", "translator", f"{type_string}_translator.txt")
     optionstring = "\n".join(option_sequence.actions)
 
     try:

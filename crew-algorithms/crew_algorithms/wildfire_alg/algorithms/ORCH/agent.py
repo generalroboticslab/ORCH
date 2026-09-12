@@ -2,7 +2,7 @@ import os
 import json
 import asyncio
 from openai import OpenAI, AsyncOpenAI
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.__main__ import Config
+from crew_algorithms.wildfire_alg.algorithms.ORCH.__main__ import Config
 from typing import List, Optional, Tuple, Dict, Literal
 from .master_logger import get_master_logger
 from .event_emitter import emit_event
@@ -155,10 +155,10 @@ class Agent:
 
         # Load overview template with error handling
         try:
-            overview_path = os.path.join("algorithms", "WILDFIRE", "prompts", "overviews", f"{agent_path}_overview.txt")
+            overview_path = os.path.join("algorithms", "ORCH", "prompts", "overviews", f"{agent_path}_overview.txt")
             
             if not os.path.exists(overview_path):
-                overview_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "WILDFIRE", "prompts", "overviews", f"{agent_path}_overview.txt")
+                overview_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "ORCH", "prompts", "overviews", f"{agent_path}_overview.txt")
             
             with open(overview_path, 'r') as file:
                 self.overview_template = file.read()        
@@ -172,10 +172,10 @@ class Agent:
 
         # Load child feedback template with error handling
         try:
-            child_feedback_path = os.path.join("algorithms", "WILDFIRE", "prompts", "child_feedback", f"{agent_path}_child_feedback.txt")
+            child_feedback_path = os.path.join("algorithms", "ORCH", "prompts", "child_feedback", f"{agent_path}_child_feedback.txt")
             
             if not os.path.exists(child_feedback_path):
-                child_feedback_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "WILDFIRE", "prompts", "child_feedback", f"{agent_path}_child_feedback.txt")
+                child_feedback_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "ORCH", "prompts", "child_feedback", f"{agent_path}_child_feedback.txt")
             
             with open(child_feedback_path, 'r') as file:
                 child_message = file.read()
@@ -203,10 +203,10 @@ class Agent:
         # Load knowledge base for managers
         if type == -1:  # Manager agent
             try:
-                knowledge_base_path = os.path.join("algorithms", "WILDFIRE", "prompts", "management", "knowledge_base.json")
+                knowledge_base_path = os.path.join("algorithms", "ORCH", "prompts", "management", "knowledge_base.json")
                 
                 if not os.path.exists(knowledge_base_path):
-                    knowledge_base_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "WILDFIRE", "prompts", "management", "knowledge_base.json")
+                    knowledge_base_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "ORCH", "prompts", "management", "knowledge_base.json")
                 
                 with open(knowledge_base_path, 'r') as file:
                     knowledge_base_data = json.load(file)
@@ -888,9 +888,9 @@ class Agent:
         for c in range(len(self.children_count)):
             if self.children_count[c] > 0:
                 
-                des_path = os.path.join('algorithms', 'WILDFIRE', 'prompts', 'descriptions', f'{worker_map[c].lower()}_description.txt')
+                des_path = os.path.join('algorithms', 'ORCH', 'prompts', 'descriptions', f'{worker_map[c].lower()}_description.txt')
                 if not os.path.exists(des_path):
-                    des_path = os.path.join('crew_algorithms', "wildfire_alg", 'algorithms', 'WILDFIRE', 'prompts', 'descriptions', f'{worker_map[c].lower()}_description.txt')
+                    des_path = os.path.join('crew_algorithms', "wildfire_alg", 'algorithms', 'ORCH', 'prompts', 'descriptions', f'{worker_map[c].lower()}_description.txt')
                 
                 with open(des_path, 'r') as file:
                     description = file.read()
@@ -1309,10 +1309,10 @@ class Agent:
             agent_type = agent_type_map.get(agent.type, "firefighter")
         
         try:
-            child_feedback_path = os.path.join("algorithms", "WILDFIRE", "prompts", "child_feedback", f"{agent_type}_child_feedback.txt")
+            child_feedback_path = os.path.join("algorithms", "ORCH", "prompts", "child_feedback", f"{agent_type}_child_feedback.txt")
             
             if not os.path.exists(child_feedback_path):
-                child_feedback_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "WILDFIRE", "prompts", "child_feedback", f"{agent_type}_child_feedback.txt")
+                child_feedback_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "ORCH", "prompts", "child_feedback", f"{agent_type}_child_feedback.txt")
             
             with open(child_feedback_path, 'r') as file:
                 child_system_prompt = file.read()
@@ -1466,7 +1466,7 @@ class Agent:
         # Type capabilities once per worker type
         type_descriptions = []
         for agent_type in seen_types:
-            filepath = os.path.join('algorithms', 'WILDFIRE', 'prompts', 'team_overviews', f'{agent_type.lower()}.txt')
+            filepath = os.path.join('algorithms', 'ORCH', 'prompts', 'team_overviews', f'{agent_type.lower()}.txt')
             try:
                 with open(filepath, 'r') as f:
                     desc = f.read().strip()

@@ -17,7 +17,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from crew_algorithms.wildfire_alg.config.build_config import create_level_presets
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import (
+from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import (
     generate_mission_description_from_config,
     generate_team_structure_with_llm,
 )

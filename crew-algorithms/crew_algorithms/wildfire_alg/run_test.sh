@@ -1,5 +1,5 @@
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
      envs.level=Cut_Trees_Sparse_large \
      envs.seed=4847 \
      envs.max_steps=100 \

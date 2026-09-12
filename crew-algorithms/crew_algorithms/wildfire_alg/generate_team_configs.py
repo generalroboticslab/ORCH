@@ -1,5 +1,5 @@
 """
-Generate team_config overrides for all WILDFIRE experiment presets.
+Generate team_config overrides for all ORCH experiment presets.
 
 This script reads experiment_presets.json and generates the corresponding
 team_config dictionaries in multiple output formats (JSON, OmegaConf CLI, Python dict).
@@ -106,7 +106,7 @@ def format_team_config_table(team_configs: dict) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate team_config overrides for WILDFIRE experiment presets"
+        description="Generate team_config overrides for ORCH experiment presets"
     )
     parser.add_argument(
         "--presets-file",

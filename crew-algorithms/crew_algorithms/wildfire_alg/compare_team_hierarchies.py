@@ -1,5 +1,5 @@
 """
-Compare WILDFIRE human preset team hierarchies against default hierarchies.
+Compare ORCH human preset team hierarchies against default hierarchies.
 
 This compares only hierarchy structure:
   - manager IDs
@@ -146,7 +146,7 @@ def main() -> None:
     default_output_file = script_dir / "team_configs" / "hierarchy_comparison.csv"
 
     parser = argparse.ArgumentParser(
-        description="Compare human preset and default WILDFIRE team hierarchies"
+        description="Compare human preset and default ORCH team hierarchies"
     )
     parser.add_argument(
         "--human-file",

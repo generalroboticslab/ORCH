@@ -1,5 +1,5 @@
 """
-Agent snapshot dataclass for the WILDFIRE algorithm.
+Agent snapshot dataclass for the ORCH algorithm.
 
 Provides frozen snapshots of agent state that are safe to read concurrently
 from the chat worker without risk of reading mid-mutation data.

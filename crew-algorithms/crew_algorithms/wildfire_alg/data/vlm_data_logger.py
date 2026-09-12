@@ -2,7 +2,7 @@
 VLM Data Logger
 
 Utility to log ASCII grids, minimap images, and metadata for VLM comparison experiments.
-This module integrates with the WILDFIRE algorithm to capture worker agent observations.
+This module integrates with the ORCH algorithm to capture worker agent observations.
 """
 
 import os

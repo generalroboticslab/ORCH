@@ -1,1 +1,1 @@
-# Data processing and visualization modules for WILDFIRE algorithm
+# Data processing and visualization modules for ORCH algorithm

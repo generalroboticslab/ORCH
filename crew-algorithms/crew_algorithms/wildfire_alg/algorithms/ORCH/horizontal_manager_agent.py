@@ -1,9 +1,9 @@
 import os
 import asyncio
 from openai import OpenAI, AsyncOpenAI
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.__main__ import Config
+from crew_algorithms.wildfire_alg.algorithms.ORCH.__main__ import Config
 from typing import List, Tuple, Dict
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.agent import Agent
+from crew_algorithms.wildfire_alg.algorithms.ORCH.agent import Agent
 from .master_logger import get_master_logger
 from .event_emitter import emit_event
 

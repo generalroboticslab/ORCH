@@ -2,13 +2,13 @@
 Generate an LLM team hierarchy and compare it with experiment_presets.json.
 
 Usage from CREW-dev/crew-algorithms:
-    python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE.compare_llm_team_config \
+    python -m crew_algorithms.wildfire_alg.algorithms.ORCH.compare_llm_team_config \
         --levels Cut_Trees_Sparse_small \
         --llm-model llama \
         --llm-url http://localhost:8000/v1
 
 For GPT/OpenAI-compatible default usage:
-    OPENAI_API_KEY=... python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE.compare_llm_team_config \
+    OPENAI_API_KEY=... python -m crew_algorithms.wildfire_alg.algorithms.ORCH.compare_llm_team_config \
         --levels Cut_Trees_Sparse_small
 """
 
@@ -36,7 +36,7 @@ DEFAULT_SKIP_LEVELS = {
 
 
 class MockEnvs:
-    """Minimal cfg.envs object matching what the WILDFIRE LLM helpers need."""
+    """Minimal cfg.envs object matching what the ORCH LLM helpers need."""
 
     def __init__(self, preset: dict[str, Any]):
         for key, value in preset.items():
@@ -65,7 +65,7 @@ class MockEnvs:
 
 
 class MockLLMs:
-    """Minimal cfg.llms object matching what the WILDFIRE LLM helpers need."""
+    """Minimal cfg.llms object matching what the ORCH LLM helpers need."""
 
     structure_generator_temperature = 0.0
     use_structure_critic = True
@@ -920,7 +920,7 @@ def generate_and_compare_level(
     api_key: str,
     args: argparse.Namespace,
 ) -> dict[str, Any]:
-    from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import (
+    from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import (
         generate_mission_description_from_config,
         generate_team_structure_with_llm,
     )
@@ -1048,7 +1048,7 @@ def parse_args() -> argparse.Namespace:
         "--llm-model",
         choices=["gpt", "qwen", "deepseek", "gemma", "glm", "llama"],
         default="gpt",
-        help="LLM provider/model family used by WILDFIRE utils.",
+        help="LLM provider/model family used by ORCH utils.",
     )
     parser.add_argument(
         "--llm-url",

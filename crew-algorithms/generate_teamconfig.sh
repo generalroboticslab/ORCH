@@ -1,7 +1,7 @@
 
 #!/usr/bin/env bash
-# Generate pregenerated WILDFIRE team configs using the project's LLM utilities.
-# Style and options mirror other run_WILDFIRE scripts.
+# Generate pregenerated ORCH team configs using the project's LLM utilities.
+# Style and options mirror other run_ORCH scripts.
 
 set -euo pipefail
 

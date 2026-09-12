@@ -12,7 +12,7 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_ALGORITHMS = ("WILDFIRE", "CAMON", "COELA", "Embodied", "HMAS_2")
+DEFAULT_ALGORITHMS = ("ORCH", "CAMON", "COELA", "Embodied", "HMAS_2")
 DEFAULT_MODELS = ("gpt", "qwen", "deepseek")
 RUN_RE = re.compile(r"_seed(?P<seed>\d+)(?:_run(?P<run>\d+))?\.log$")
 EXIT_CODE_RE = re.compile(r"# Exit code: (?P<code>-?\d+)")

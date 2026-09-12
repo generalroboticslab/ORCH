@@ -15,7 +15,7 @@ import certifi
 import asyncio
 # Lazy import to avoid OpenGL dependency issues in Docker
 # from crew_algorithms.wildfire_alg.data.render_logs import compile_split_screen_video
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import generate_graph, Action, _validate_graph_and_types
+from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import generate_graph, Action, _validate_graph_and_types
 
 import argparse
 import sys
@@ -75,16 +75,16 @@ register_env_configs()
 
 
 # Import human interface functions from utils
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import (
+from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import (
     submit_human_actions_batch, submit_human_action, get_human_observations,
     get_all_human_observations, is_session_active, set_session_active,
     update_human_observations, clear_human_actions, get_all_human_actions
 )
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.agent_snapshot import (
+from crew_algorithms.wildfire_alg.algorithms.ORCH.agent_snapshot import (
     AgentSnapshot, take_snapshot
 )
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.chat_worker import run_chat_worker
-from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.event_emitter import emit_event
+from crew_algorithms.wildfire_alg.algorithms.ORCH.chat_worker import run_chat_worker
+from crew_algorithms.wildfire_alg.algorithms.ORCH.event_emitter import emit_event
 
 
 
@@ -277,10 +277,10 @@ async def async_wildfire_alg(cfg: Config):
     from crew_algorithms.wildfire_alg.core.utils import (
         make_env,
     )
-    from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.agent import Agent
-    from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.worker_agent import WorkerAgent
-    from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import Option
-    from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.master_logger import init_master_logger, get_master_logger
+    from crew_algorithms.wildfire_alg.algorithms.ORCH.agent import Agent
+    from crew_algorithms.wildfire_alg.algorithms.ORCH.worker_agent import WorkerAgent
+    from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import Option
+    from crew_algorithms.wildfire_alg.algorithms.ORCH.master_logger import init_master_logger, get_master_logger
     from torchrl.record.loggers import generate_exp_name, get_logger
 
     # Validate configuration
@@ -300,7 +300,7 @@ async def async_wildfire_alg(cfg: Config):
     if not hasattr(cfg.envs, 'collaboration_mode') or cfg.envs.collaboration_mode is None:
         raise ValueError("Configuration must have 'collaboration_mode' section")
 
-    # print(f"[DEBUG] Starting WILDFIRE algorithm initialization")
+    # print(f"[DEBUG] Starting ORCH algorithm initialization")
     # print(f"[DEBUG] Configuration loaded: level={cfg.envs.level}, seed={cfg.envs.seed}")
     
     # wandb.login()
@@ -321,7 +321,7 @@ async def async_wildfire_alg(cfg: Config):
     
     toggle_timestep_channel = ToggleTimestepChannel(uuid.uuid4())
 
-    cfg.envs.algorithm = 'WILDFIRE'
+    cfg.envs.algorithm = 'ORCH'
     
     level = cfg.envs.level
     seed  = cfg.envs.seed
@@ -412,7 +412,7 @@ async def async_wildfire_alg(cfg: Config):
 
     # team_generation_type already computed above (before make_env)
 
-    path = os.path.join("crew_algorithms", "wildfire_alg", "results", "logs", "WILDFIRE", llm_model, team_generation_type, level, str(seed), cfg.envs.timestamp)
+    path = os.path.join("crew_algorithms", "wildfire_alg", "results", "logs", "ORCH", llm_model, team_generation_type, level, str(seed), cfg.envs.timestamp)
     os.makedirs(path, exist_ok=True)
     
     # Initialize master logger
@@ -540,7 +540,7 @@ async def async_wildfire_alg(cfg: Config):
 
     # Now create manager agents for all nodes in the graph beyond the worker count
     # Use agent_types to determine what type of manager to create
-    from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.horizontal_manager_agent import HorizontalManagerAgent
+    from crew_algorithms.wildfire_alg.algorithms.ORCH.horizontal_manager_agent import HorizontalManagerAgent
 
     agents = worker_agents[:]
     for g in range(worker_agent_count, len(graph)):
@@ -808,7 +808,7 @@ async def async_wildfire_alg(cfg: Config):
             _tempfile.gettempdir(), f"observations_{_lobby_id}.json"
         )
         try:
-            from crew_algorithms.wildfire_alg.algorithms.WILDFIRE.utils import (
+            from crew_algorithms.wildfire_alg.algorithms.ORCH.utils import (
                 get_all_human_observations,
             )
 

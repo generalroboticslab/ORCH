@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# WILDFIRE Algorithm Test Suite
+# ORCH Algorithm Test Suite
 # Runs various levels with AI-only control (no human interface)
 
 

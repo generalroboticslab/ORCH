@@ -1,5 +1,5 @@
 """
-Chat worker for the WILDFIRE algorithm.
+Chat worker for the ORCH algorithm.
 
 Async task that runs concurrently with the game loop.
 Polls /tmp/chat_in_{lobby_id}.jsonl and processes human messages by:

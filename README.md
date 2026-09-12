@@ -32,11 +32,21 @@ ORCH/crew-dojo/Builds/
 ```
 
 
-## 5. Run the experiment 
+## 4. Run the experiment
 
 ### LLM Usage
 
 You can use an API service such as the OpenAI API or host a model locally for inference.
+
+If you use the same LLMs as we do, simply set `MODEL` in [run_ORCH.sh](crew-algorithms/run_ORCH.sh) to the corresponding supported name: `gpt`, `qwen`, `deepseek`, `gemma`, `glm`, `llama`, `ernie`, or `nemotron`. For example:
+
+```bash
+MODEL="qwen"
+```
+
+These names select the model configurations already implemented in the code. No code changes are needed; configure your endpoint (`URL`) and API key as described below. Use the same model name in [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) when running baselines.
+
+If you choose a different LLM, you need to modify the code before running experiments. Update the model configuration in [config/configs.py](crew-algorithms/crew_algorithms/wildfire_alg/config/configs.py) and the model-name mappings in [ORCH/agent.py](crew-algorithms/crew_algorithms/wildfire_alg/algorithms/ORCH/agent.py) and [ORCH/utils.py](crew-algorithms/crew_algorithms/wildfire_alg/algorithms/ORCH/utils.py). If you introduce a new model name, also update model validation and configuration loading in the relevant algorithm's `__main__.py`. For baselines, update the corresponding algorithm's model handling as needed to support your LLM.
 
 #### Using the OpenAI API
 
@@ -72,22 +82,37 @@ export QWEN_API_KEY="your-local-api-key"
 
 The key must match the API key configured on your model server.
 
+### Run Baselines
 
-From `crew-algorithms`, configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run:
+Configure [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the baseline algorithms in `ALGOS` (`CAMON`, `COELA`, `HMAS_2`, and/or `Embodied`), and choose the missions and seeds in `PRESETS` and `SEEDS`.
 
+From the repository root, run:
+
+```bash
+cd crew-algorithms
+conda activate crew
+bash run_algorithm_baseline.sh
 ```
+
+### Run ORCH
+
+Configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run from `crew-algorithms`:
+
+```bash
 conda activate crew
 bash run_ORCH.sh
 ```
 
-## 6. Check the result
+## 5. Check the result
+
+### ORCH Results
 
 When you run `bash run_ORCH.sh` from `crew-algorithms`, outputs are saved in the following locations (paths below are relative to the repository root).
 
 **Experiment console logs** are saved separately for each model, mission, and seed:
 
 ```text
-crew-algorithms/experiment_logs/<MODEL>/WILDFIRE/<LEVEL>/seed<SEED>.log
+crew-algorithms/experiment_logs/<MODEL>/ORCH/<LEVEL>/seed<SEED>.log
 ```
 
 These files capture standard output and errors, including the run configuration and completion or failure status. Start here when checking progress or troubleshooting a run. Running the same model, mission, and seed again overwrites its console log.
@@ -95,7 +120,7 @@ These files capture standard output and errors, including the run configuration 
 **Results and detailed agent logs** are saved in a timestamped directory for each run:
 
 ```text
-crew-algorithms/crew_algorithms/wildfire_alg/results/logs/WILDFIRE/<MODEL>/<TEAM_GENERATION_TYPE>/<LEVEL>/<SEED>/<TIMESTAMP>/
+crew-algorithms/crew_algorithms/wildfire_alg/results/logs/ORCH/<MODEL>/<TEAM_GENERATION_TYPE>/<LEVEL>/<SEED>/<TIMESTAMP>/
 ```
 
 For `run_ORCH.sh`, `<TEAM_GENERATION_TYPE>` is `preset` because the script supplies a team configuration. `<TIMESTAMP>` uses the format `YYYY-MM-DD-HH-MM-SS`.
@@ -107,8 +132,30 @@ For `run_ORCH.sh`, `<TEAM_GENERATION_TYPE>` is `preset` because the script suppl
 | `master_logs/master_log_*.json` | Structured version of the master event log for analysis. |
 | `Agent_<ID>/chats.txt` | Individual agent conversation logs, written as messages are recorded. |
 
-For example, a `gpt` run of `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/gpt/WILDFIRE/Scout_Fire_small/seed4651.log` and its results under `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/WILDFIRE/gpt/preset/Scout_Fire_small/4651/<TIMESTAMP>/`.
+For example, a `gpt` run of `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/gpt/ORCH/Scout_Fire_small/seed4651.log` and its results under `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/ORCH/gpt/preset/Scout_Fire_small/4651/<TIMESTAMP>/`.
 
+
+### Baseline Results
+
+When you run `bash run_algorithm_baseline.sh` from `crew-algorithms`, outputs are saved separately for each baseline. In the paths below, `<ALGO>` is `CAMON`, `COELA`, `HMAS_2`, or `Embodied`, as selected in `ALGOS`. All paths are relative to the repository root.
+
+**Experiment console logs:**
+
+```text
+crew-algorithms/experiment_logs/<MODEL>/<ALGO>/<LEVEL>/seed<SEED>.log
+```
+
+Check these files for progress, errors, and completion or failure status. Running the same algorithm, model, mission, and seed again overwrites its console log.
+
+**Results:**
+
+```text
+crew-algorithms/crew_algorithms/wildfire_alg/results/logs/<ALGO>/<MODEL>/<LEVEL>/<SEED>/<TIMESTAMP>/
+```
+
+Each run directory contains a `data.csv` file with per-timestep mission metrics. `<TIMESTAMP>` uses the format `YYYY-MM-DD-HH-MM-SS`. Baseline result paths do not include a `<TEAM_GENERATION_TYPE>` directory.
+
+For example, a `CAMON` baseline run using `gpt` on `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/gpt/CAMON/Scout_Fire_small/seed4651.log` and its metrics to `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/CAMON/gpt/Scout_Fire_small/4651/<TIMESTAMP>/data.csv`.
 
 # Result
 ![ORCH_Result](assets/Aggregated%20Result%20by%20Algorithm.png)
@@ -130,6 +177,3 @@ This work is supported by the ARL STRONG program under awards W911NF2320182, W91
       url={https://arxiv.org/abs/2609.11737},
 }
 ```
-
-
-

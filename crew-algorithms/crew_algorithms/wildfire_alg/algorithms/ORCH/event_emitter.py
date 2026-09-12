@@ -1,5 +1,5 @@
 """
-Event emitter for WILDFIRE algorithm activity events.
+Event emitter for ORCH algorithm activity events.
 
 Appends structured events to /tmp/events_{lobby_id}.jsonl with sequential IDs.
 Thread-safe per-lobby sequence counter using asyncio locks.

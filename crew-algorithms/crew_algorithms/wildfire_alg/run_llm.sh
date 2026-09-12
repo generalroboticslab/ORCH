@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# WILDFIRE Algorithm LLM Test Suite
+# ORCH Algorithm LLM Test Suite
 # Comprehensive testing of team structure generation methods
 #
 # Test Matrix:
@@ -14,7 +14,7 @@
 # Total: 36 tests (runs 4 at a time in parallel with staggered starts)
 
 echo "=========================================="
-echo "WILDFIRE LLM Test Suite"
+echo "ORCH LLM Test Suite"
 echo "Starting comprehensive test matrix..."
 echo "=========================================="
 
@@ -28,7 +28,7 @@ echo ""
 echo ">>> Starting Cut_Trees_Sparse_large tests..."
 
  #Batch 1: Seed 212 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=212 \
     envs.max_steps=50 \
@@ -36,7 +36,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=212 \
     envs.max_steps=50 \
@@ -45,7 +45,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=212 \
     envs.max_steps=50 \
@@ -55,7 +55,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=212 \
     envs.max_steps=50 \
@@ -69,7 +69,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 echo "Cut_Trees_Sparse_large seed 212 completed."
 
 # Batch 2: Seed 981 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=981 \
     envs.max_steps=50 \
@@ -77,7 +77,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=981 \
     envs.max_steps=50 \
@@ -86,7 +86,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=981 \
     envs.max_steps=50 \
@@ -96,7 +96,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=981 \
     envs.max_steps=50 \
@@ -110,7 +110,7 @@ wait
 echo "Cut_Trees_Sparse_large seed 981 completed."
 
 # Batch 3: Seed 1530 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=1530 \
     envs.max_steps=50 \
@@ -118,7 +118,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=1530 \
     envs.max_steps=50 \
@@ -126,7 +126,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     envs.graph=simple &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=1530 \
     envs.max_steps=50 \
@@ -136,7 +136,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Cut_Trees_Sparse_large \
     envs.seed=1530 \
     envs.max_steps=50 \
@@ -159,14 +159,14 @@ echo ""
 echo ">>> Starting Transport_Firefighters_large tests..."
 
 # Batch 4: Seed 741 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=741 \
     envs.max_steps=20 \
     envs.collaboration_mode=ai_control &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=741 \
     envs.max_steps=20 \
@@ -175,7 +175,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=741 \
     envs.max_steps=20 \
@@ -185,7 +185,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=741 \
     envs.max_steps=20 \
@@ -198,14 +198,14 @@ wait
 echo "Transport_Firefighters_large seed 741 completed."
 
 # Batch 5: Seed 7305 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=7305 \
     envs.max_steps=20 \
     envs.collaboration_mode=ai_control &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=7305 \
     envs.max_steps=20 \
@@ -213,7 +213,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     envs.graph=simple &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=7305 \
     envs.max_steps=20 \
@@ -223,7 +223,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=7305 \
     envs.max_steps=20 \
@@ -237,14 +237,14 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 echo "Transport_Firefighters_large seed 7305 completed."
 
 # Batch 6: Seed 9528 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=9528 \
     envs.max_steps=20 \
     envs.collaboration_mode=ai_control &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=9528 \
     envs.max_steps=20 \
@@ -252,7 +252,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     envs.graph=simple &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=9528 \
     envs.max_steps=20 \
@@ -262,7 +262,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Transport_Firefighters_large \
     envs.seed=9528 \
     envs.max_steps=20 \
@@ -285,14 +285,14 @@ echo ""
 echo ">>> Starting Rescue_Civilians_Known_Location_large tests..."
 
 # Batch 7: Seed 7979 - All 4 methods
-# python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+# python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
 #     envs.level=Rescue_Civilians_Known_Location_large \
 #     envs.seed=7979 \
 #     envs.max_steps=50 \
 #     envs.collaboration_mode=ai_control &
 # sleep 20
 
-# python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+# python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
 #     envs.level=Rescue_Civilians_Known_Location_large \
 #     envs.seed=7979 \
 #     envs.max_steps=50 \
@@ -302,7 +302,7 @@ echo ">>> Starting Rescue_Civilians_Known_Location_large tests..."
 #     llms.use_structure_critic=true &
 # sleep 20
 
-# python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+# python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
 #     envs.level=Rescue_Civilians_Known_Location_large \
 #     envs.seed=7979 \
 #     envs.max_steps=50 \
@@ -312,7 +312,7 @@ echo ">>> Starting Rescue_Civilians_Known_Location_large tests..."
 #     llms.use_structure_critic=false &
 # sleep 20
 
-# python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+# python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
 #     envs.level=Rescue_Civilians_Known_Location_large \
 #     envs.seed=7979 \
 #     envs.max_steps=50 \
@@ -323,14 +323,14 @@ echo ">>> Starting Rescue_Civilians_Known_Location_large tests..."
 echo "Rescue_Civilians_Known_Location_large seed 7979 completed."
 
 # Batch 8: Seed 1539 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=1539 \
     envs.max_steps=50 \
     envs.collaboration_mode=ai_control &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=1539 \
     envs.max_steps=50 \
@@ -338,7 +338,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     envs.graph=simple &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=1539 \
     envs.max_steps=50 \
@@ -348,7 +348,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=1539 \
     envs.max_steps=50 \
@@ -362,14 +362,14 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
 echo "Rescue_Civilians_Known_Location_large seed 1539 completed."
 
 # Batch 9: Seed 2269 - All 4 methods
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=2269 \
     envs.max_steps=50 \
     envs.collaboration_mode=ai_control &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=2269 \
     envs.max_steps=50 \
@@ -377,7 +377,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     envs.graph=simple &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=2269 \
     envs.max_steps=50 \
@@ -387,7 +387,7 @@ python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
     llms.use_structure_critic=true &
 sleep 20
 
-python -m crew_algorithms.wildfire_alg.algorithms.WILDFIRE \
+python -m crew_algorithms.wildfire_alg.algorithms.ORCH \
     envs.level=Rescue_Civilians_Known_Location_large \
     envs.seed=2269 \
     envs.max_steps=50 \

@@ -1,6 +1,6 @@
 """
-Algorithm Service for WILDFIRE
-Runs the WILDFIRE algorithm and provides HTTP API for communication
+Algorithm Service for ORCH
+Runs the ORCH algorithm and provides HTTP API for communication
 """
 
 from fastapi import FastAPI, HTTPException
@@ -80,7 +80,7 @@ game_chats: Dict[str, Dict[str, Dict[str, Any]]] = {}  # lobby_id -> {chat_id ->
 
 @app.post("/start_game")
 async def start_game(request: StartGameRequest):
-    """Start a WILDFIRE game session"""
+    """Start an ORCH game session"""
     try:
         if request.lobby_id in active_games:
             raise HTTPException(status_code=400, detail="Game already running")
@@ -97,7 +97,7 @@ async def start_game(request: StartGameRequest):
         game_observations[request.lobby_id] = {}
         game_chats[request.lobby_id] = {}
         
-        # Start WILDFIRE process in background thread
+        # Start ORCH process in background thread
         thread = threading.Thread(
             target=run_wildfire_game,
             args=(request.lobby_id, request.lobby_config),
@@ -116,7 +116,7 @@ async def start_game(request: StartGameRequest):
         raise HTTPException(status_code=500, detail=f"Failed to start game: {str(e)}")
 
 def run_wildfire_game(lobby_id: str, lobby_config: Dict[str, Any]):
-    """Run the WILDFIRE algorithm in a separate process"""
+    """Run the ORCH algorithm in a separate process"""
     try:
         print(f"[DEBUG] Lobby config: {lobby_config}")
         # Update status
@@ -151,7 +151,7 @@ def run_wildfire_game(lobby_id: str, lobby_config: Dict[str, Any]):
         print(f"[DEBUG] Collaboration mode: {collaboration_mode}")
         
         cmd = [
-            sys.executable, "-m", "crew_algorithms.wildfire_alg.algorithms.WILDFIRE",
+            sys.executable, "-m", "crew_algorithms.wildfire_alg.algorithms.ORCH",
             f"envs.level={lobby_config.get('level', 'level1')}",
             f"envs.seed={lobby_config.get('seed', 2351)}",
             f"envs.collaboration_mode={collaboration_mode}",
@@ -160,7 +160,7 @@ def run_wildfire_game(lobby_id: str, lobby_config: Dict[str, Any]):
         if team_config_override:
             cmd.append(team_config_override)
         
-        print(f"Starting WILDFIRE for lobby {lobby_id}")
+        print(f"Starting ORCH for lobby {lobby_id}")
         print(f"Command: {' '.join(cmd)}")
         print(f"Working directory: {work_dir}")
         print(f"Python path: {python_path}")
@@ -199,7 +199,7 @@ def run_wildfire_game(lobby_id: str, lobby_config: Dict[str, Any]):
         stdout_thread.join(timeout=5)
         stderr_thread.join(timeout=5)
         
-        print(f"WILDFIRE for lobby {lobby_id} completed with return code: {return_code}")
+        print(f"ORCH for lobby {lobby_id} completed with return code: {return_code}")
         
         # Update status
         if lobby_id in active_games:
@@ -211,7 +211,7 @@ def run_wildfire_game(lobby_id: str, lobby_config: Dict[str, Any]):
             del game_processes[lobby_id]
         
     except Exception as e:
-        print(f"Error running WILDFIRE for lobby {lobby_id}: {e}")
+        print(f"Error running ORCH for lobby {lobby_id}: {e}")
         if lobby_id in active_games:
             active_games[lobby_id]["status"] = "error"
             active_games[lobby_id]["active"] = False
@@ -865,7 +865,7 @@ async def stop_game(lobby_id: str):
         if lobby_id not in active_games:
             raise HTTPException(status_code=404, detail="Game not found")
         
-        # Kill the entire process group (WILDFIRE + Unity child) if running
+        # Kill the entire process group (ORCH + Unity child) if running
         if lobby_id in game_processes:
             process = game_processes[lobby_id]
             try:
@@ -920,7 +920,7 @@ async def health_check():
     return {
         "status": "healthy",
         "active_games": len([g for g in active_games.values() if g["active"]]),
-        "service": "WILDFIRE Algorithm Service"
+        "service": "ORCH Algorithm Service"
     }
 
 if __name__ == "__main__":
@@ -931,5 +931,5 @@ if __name__ == "__main__":
     parser.add_argument("--port", type=int, default=8001, help="Port to run the service on")
     args = parser.parse_args()
     
-    print(f"Starting WILDFIRE Algorithm Service on port {args.port}")
+    print(f"Starting ORCH Algorithm Service on port {args.port}")
     uvicorn.run(app, host="0.0.0.0", port=args.port)

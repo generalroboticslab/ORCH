@@ -223,7 +223,7 @@ def _get_model_name(cfg, depth: str = "low") -> str:
 
 class Action(BaseModel):
     """
-    Represents an action that can be taken by an agent in the WILDFIRE algorithm.
+    Represents an action that can be taken by an agent in the ORCH algorithm.
     
     Attributes:
         done (bool): Whether the task is complete
@@ -621,10 +621,10 @@ async def async_request_options(agent, global_data: dict) -> OptionSequence:
         agent_type_string = type_map.get(agent.type, "Unknown")
 
 
-    prompt_path = os.path.join("algorithms", "WILDFIRE", "prompts", "planner", f"{agent_type_string}_planner.txt")
+    prompt_path = os.path.join("algorithms", "ORCH", "prompts", "planner", f"{agent_type_string}_planner.txt")
     
     if not os.path.exists(prompt_path):
-        prompt_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "WILDFIRE", "prompts", "planner", f"{agent_type_string}_planner.txt")
+        prompt_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "ORCH", "prompts", "planner", f"{agent_type_string}_planner.txt")
     
     with open(prompt_path, 'r') as file:
         prompt_content = file.read()
@@ -776,10 +776,10 @@ Coordinates MUST be whole integers with no decimal points.
 Do NOT add line numbers. Output ONLY the pipe-delimited lines, one per input action, in order."""
 
     # Load translator prompt
-    prompt_path = os.path.join("algorithms", "WILDFIRE", "prompts", "translator", f"{type_string}_translator.txt")
+    prompt_path = os.path.join("algorithms", "ORCH", "prompts", "translator", f"{type_string}_translator.txt")
     
     if not os.path.exists(prompt_path):
-        prompt_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "WILDFIRE", "prompts", "translator", f"{type_string}_translator.txt")
+        prompt_path = os.path.join("crew_algorithms", "wildfire_alg", "algorithms", "ORCH", "prompts", "translator", f"{type_string}_translator.txt")
     
     optionstring = "\n".join(option_sequence.actions)
 

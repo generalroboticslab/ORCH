@@ -1,33 +1,33 @@
 PRESETS=(
   "Cut_Trees_Sparse_small"
-  "Cut_Trees_Sparse_large"
-  "Cut_Trees_Lines_small"
-  "Cut_Trees_Lines_large"
-  "Scout_Fire_small"
-  "Scout_Fire_large"
-  "Transport_Firefighters_small"
-  "Transport_Firefighters_large"
-  "Rescue_Civilians_Known_Location_small"
-  "Rescue_Civilians_Known_Location_large"
-  "Suppress_Fire_Contain"
-  "Suppress_Fire_Extinguish"
-  "Rescue_Civilians_Search_and_Rescue"
-  "Suppress_Fire_Locate_and_Suppress"
-  "Suppress_Fire_Locate_Deploy_Suppress"
-  "Rescue_Civilians_Search_Rescue_Transport"
-  "Full_Game"
-  "Scout_Fire_Drone_Lost"
-  "Transport_Helicopter_Down"
-  "Rescue_Civilians_Surprise"
-  "Suppress_Fire_Extinguish_Second_Fire"
-  "Suppress_Fire_Contain_Water_Source"
-  "Suppress_Fire_Extinguish_Rapid_Growth"
-  "Scale_Level_Simple"
-  "Scale_Level_Complex"
+  # "Cut_Trees_Sparse_large"
+  # "Cut_Trees_Lines_small"
+  # "Cut_Trees_Lines_large"
+  # "Scout_Fire_small"
+  # "Scout_Fire_large"
+  # "Transport_Firefighters_small"
+  # "Transport_Firefighters_large"
+  # "Rescue_Civilians_Known_Location_small"
+  # "Rescue_Civilians_Known_Location_large"
+  # "Suppress_Fire_Contain"
+  # "Suppress_Fire_Extinguish"
+  # "Rescue_Civilians_Search_and_Rescue"
+  # "Suppress_Fire_Locate_and_Suppress"
+  # "Suppress_Fire_Locate_Deploy_Suppress"
+  # "Rescue_Civilians_Search_Rescue_Transport"
+  # "Full_Game"
+  # "Scout_Fire_Drone_Lost"
+  # "Transport_Helicopter_Down"
+  # "Rescue_Civilians_Surprise"
+  # "Suppress_Fire_Extinguish_Second_Fire"
+  # "Suppress_Fire_Contain_Water_Source"
+  # "Suppress_Fire_Extinguish_Rapid_Growth"
+  # "Scale_Level_Simple"
+  # "Scale_Level_Complex"
 )
 
 declare -A SEEDS
-SEEDS["Cut_Trees_Sparse_small"]="483 6370 9964"
+SEEDS["Cut_Trees_Sparse_small"]="483"
 SEEDS["Cut_Trees_Sparse_large"]="212 981 1530 5382 9405"
 SEEDS["Cut_Trees_Lines_small"]="9259 4881 8456 59497 66768"
 SEEDS["Cut_Trees_Lines_large"]="820 5406 6503 7328 2747"
@@ -54,14 +54,14 @@ SEEDS["Scale_Level_Simple"]="42 137 256 503 819"
 SEEDS["Scale_Level_Complex"]="42 137 256 503 819"
 
 
-MODEL="qwen"
+MODEL="gemma"
 URL="http://localhost:8000/v1"
 
 # GPU 5 is disabled here.
 GPU_IDS=(0 1 2 3 4 6 7)
 NUM_GPUS=${#GPU_IDS[@]}
 
-ALGOS=("Embodied")
+ALGOS=("CAMON" "COELA" "HMAS_2" "Embodied")
 MAX_JOBS=5
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
