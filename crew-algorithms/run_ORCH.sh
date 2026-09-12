@@ -114,7 +114,7 @@ run_job () {
     echo "Team config: $team_config"
     echo
 
-    CUDA_VISIBLE_DEVICES=$gpu_id SDL_VIDEODRIVER=dummy \
+
     python -m crew_algorithms.wildfire_alg.algorithms.${algo} \
       envs.level=$preset \
       envs.seed=$seed \

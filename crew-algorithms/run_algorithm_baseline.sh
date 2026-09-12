@@ -27,7 +27,7 @@ PRESETS=(
 )
 
 declare -A SEEDS
-SEEDS["Cut_Trees_Sparse_small"]="483"
+SEEDS["Cut_Trees_Sparse_small"]="375 483 43 6370 9964"
 SEEDS["Cut_Trees_Sparse_large"]="212 981 1530 5382 9405"
 SEEDS["Cut_Trees_Lines_small"]="9259 4881 8456 59497 66768"
 SEEDS["Cut_Trees_Lines_large"]="820 5406 6503 7328 2747"
@@ -57,9 +57,6 @@ SEEDS["Scale_Level_Complex"]="42 137 256 503 819"
 MODEL="gemma"
 URL="http://localhost:8000/v1"
 
-# GPU 5 is disabled here.
-GPU_IDS=(0 1 2 3 4 6 7)
-NUM_GPUS=${#GPU_IDS[@]}
 
 ALGOS=("CAMON" "COELA" "HMAS_2" "Embodied")
 MAX_JOBS=5
@@ -74,20 +71,18 @@ run_job () {
   local preset=$1
   local seed=$2
   local algo=$3
-  local gpu_id=$4
   local log_file="$LOG_DIR/${algo}/${preset}/seed${seed}.log"
   local status=0
 
   mkdir -p "$(dirname "$log_file")"
 
-  echo "Starting: $algo | $preset | seed=$seed | GPU=$gpu_id | log=$log_file"
+  echo "Starting: $algo | $preset | seed=$seed | log=$log_file"
 
   {
-    echo "Starting: $algo | $preset | seed=$seed | GPU=$gpu_id"
+    echo "Starting: $algo | $preset | seed=$seed"
     echo "Log file: $log_file"
     echo
 
-    CUDA_VISIBLE_DEVICES=$gpu_id SDL_VIDEODRIVER=dummy \
     python -m crew_algorithms.wildfire_alg.algorithms.${algo} \
       envs.level=$preset \
       envs.seed=$seed \
@@ -110,16 +105,12 @@ run_job () {
 }
 
 job_count=0
-job_id=0
 
 for algo in "${ALGOS[@]}"; do
   for preset in "${PRESETS[@]}"; do
     for seed in ${SEEDS[$preset]}; do
 
-      gpu_id=${GPU_IDS[$(( job_id % NUM_GPUS ))]}
-      ((job_id++))
-
-      run_job "$preset" "$seed" "$algo" "$gpu_id" &
+      run_job "$preset" "$seed" "$algo" &
 
       ((job_count++))
 

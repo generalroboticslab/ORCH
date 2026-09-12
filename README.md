@@ -84,7 +84,7 @@ The key must match the API key configured on your model server.
 
 ### Run Baselines
 
-Configure [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the baseline algorithms in `ALGOS` (`CAMON`, `COELA`, `HMAS_2`, and/or `Embodied`), and choose the missions and seeds in `PRESETS` and `SEEDS`.
+Configure [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) with your model (`MODEL`), endpoint (`URL`), and desired parallelism (`MAX_JOBS`). Select the baseline algorithms in `ALGOS` (`CAMON`, `COELA`, `HMAS_2`, and/or `Embodied`), and choose the missions and seeds in `PRESETS` and `SEEDS`.
 
 From the repository root, run:
 
@@ -96,7 +96,7 @@ bash run_algorithm_baseline.sh
 
 ### Run ORCH
 
-Configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), available GPUs (`GPU_IDS`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run from `crew-algorithms`:
+Configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run from `crew-algorithms`:
 
 ```bash
 conda activate crew
