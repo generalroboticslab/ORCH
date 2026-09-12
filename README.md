@@ -13,6 +13,8 @@ Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
 # Get Started
 
+We currently only support Linux machine to run the experiment.
+
 ## 1. Clone this repo
 
 ```
