@@ -54,15 +54,22 @@ SEEDS["Scale_Level_Simple"]="42 137 256 503 819"
 SEEDS["Scale_Level_Complex"]="42 137 256 503 819"
 
 
-MODEL="gemma"
+MODEL="google/gemma-4-31B-it"
 URL="http://localhost:8000/v1"
+# Leave blank for a local/unauthenticated endpoint.
+API_KEY=""
+
+export BASELINE_API_KEY="$API_KEY"
+MODEL_FAMILY="custom"
+[[ "$URL" == https://api.openai.com/* ]] && MODEL_FAMILY="gpt"
+MODEL_LOG_NAME="${MODEL##*/}"
 
 
 ALGOS=("CAMON" "COELA" "HMAS_2" "Embodied")
 MAX_JOBS=5
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LOG_DIR="$SCRIPT_DIR/experiment_logs/${MODEL}"
+LOG_DIR="$SCRIPT_DIR/experiment_logs/${MODEL_LOG_NAME}"
 
 mkdir -p "$LOG_DIR"
 echo "Logging experiments to: $LOG_DIR"
@@ -87,8 +94,9 @@ run_job () {
       envs.level=$preset \
       envs.seed=$seed \
       envs.collaboration_mode=ai_control \
-      envs.llm_model=$MODEL \
-      envs.llm_url=$URL \
+      envs.llm_model="$MODEL_FAMILY" \
+      envs.model_name="$MODEL" \
+      envs.llm_url="$URL" \
       envs.no_graphics=true
 
     status=$?

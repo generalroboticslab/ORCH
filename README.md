@@ -40,53 +40,47 @@ ORCH/crew-dojo/Builds/
 
 You can use an API service such as the OpenAI API or host a model locally for inference.
 
-If you use the same LLMs as we do, simply set `MODEL` in [run_ORCH.sh](crew-algorithms/run_ORCH.sh) to the corresponding supported name: `gpt`, `qwen`, `deepseek`, `gemma`, `glm`, `llama`, `ernie`, or `nemotron`. For example:
+Set `MODEL`, `URL`, and `API_KEY` in [run_ORCH.sh](crew-algorithms/run_ORCH.sh) to the exact model ID exposed by the API server, its OpenAI-compatible base URL, and its optional API key. For example:
 
 ```bash
-MODEL="qwen"
+MODEL="Inferact/Qwen3.8-Flash-Next-NVFP4"
+URL="http://localhost:8000/v1"
+API_KEY=""
 ```
 
-These names select the model configurations already implemented in the code. No code changes are needed; configure your endpoint (`URL`) and API key as described below. Use the same model name in [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) when running baselines.
-
-If you choose a different LLM, you need to modify the code before running experiments. Update the model configuration in [config/configs.py](crew-algorithms/crew_algorithms/wildfire_alg/config/configs.py) and the model-name mappings in [ORCH/agent.py](crew-algorithms/crew_algorithms/wildfire_alg/algorithms/ORCH/agent.py) and [ORCH/utils.py](crew-algorithms/crew_algorithms/wildfire_alg/algorithms/ORCH/utils.py). If you introduce a new model name, also update model validation and configuration loading in the relevant algorithm's `__main__.py`. For baselines, update the corresponding algorithm's model handling as needed to support your LLM.
+The exact `MODEL` value is sent to the API; adding a new model no longer requires changes to Python configuration files. `MODEL_FAMILY` is selected automatically: an official OpenAI URL uses `gpt`, while every other OpenAI-compatible endpoint uses `custom`. Use the same three settings in [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) when running baselines.
 
 #### Using the OpenAI API
 
-To use GPT models through the OpenAI API, configure the following:
-
-- **Model:** `gpt`
-- **API base URL:** `https://api.openai.com/v1`
-- **API key:** Set the `OPENAI_API_KEY` environment variable:
+To use a GPT model through the official OpenAI API, set the exact model name, URL, and key directly in the runner:
 
 ```bash
-export OPENAI_API_KEY="your-openai-api-key"
+MODEL="<exact-openai-model-name>"
+URL="https://api.openai.com/v1"
+API_KEY="your-openai-api-key"
 ```
+
+If `API_KEY` is blank for the official OpenAI URL, the code falls back to the `OPENAI_API_KEY` environment variable. It raises an error if neither is available.
 
 #### Using a Locally Hosted Model
 
-Host your model with an OpenAI-compatible API server and configure the API base URL to point to your server, for example:
-
-```text
-http://localhost:8000/v1
-```
-
-If you use one of the models tested in our paper, enable API-key authentication when starting the server. Set the corresponding environment variable using the model name in uppercase, followed by `_API_KEY`:
+Host the model with an OpenAI-compatible API server and enter the exact served model ID. For example, for a local vLLM server:
 
 ```bash
-export <MODEL_NAME>_API_KEY="your-local-api-key"
+MODEL="Inferact/Qwen3.8-Flash-Next-NVFP4"
+URL="http://localhost:8000/v1"
+API_KEY=""
 ```
 
-For example, for a Qwen model:
+Leave `API_KEY` blank when the local server does not require authentication. The code supplies a harmless `EMPTY` placeholder because the OpenAI client requires a key argument. If the server was launched with API-key authentication, enter the matching value instead:
 
 ```bash
-export QWEN_API_KEY="your-local-api-key"
+API_KEY="your-local-api-key"
 ```
-
-The key must match the API key configured on your model server.
 
 ### Run Baselines
 
-Configure [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) with your model (`MODEL`), endpoint (`URL`), and desired parallelism (`MAX_JOBS`). Select the baseline algorithms in `ALGOS` (`CAMON`, `COELA`, `HMAS_2`, and/or `Embodied`), and choose the missions and seeds in `PRESETS` and `SEEDS`.
+Configure [run_algorithm_baseline.sh](crew-algorithms/run_algorithm_baseline.sh) with the exact model ID (`MODEL`), endpoint (`URL`), optional key (`API_KEY`), and desired parallelism (`MAX_JOBS`). Select the baseline algorithms in `ALGOS` (`CAMON`, `COELA`, `HMAS_2`, and/or `Embodied`), and choose the missions and seeds in `PRESETS` and `SEEDS`.
 
 From the repository root, run:
 
@@ -98,9 +92,10 @@ bash run_algorithm_baseline.sh
 
 ### Run ORCH
 
-Configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with your model (`MODEL`), endpoint (`URL`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run from `crew-algorithms`:
+Configure [run_ORCH.sh](crew-algorithms/run_ORCH.sh) with the exact model ID (`MODEL`), endpoint (`URL`), optional key (`API_KEY`), and desired parallelism (`MAX_JOBS`). Select the missions and seeds in `PRESETS` and `SEEDS`, then run from `crew-algorithms`:
 
 ```bash
+cd crew-algorithms
 conda activate crew
 bash run_ORCH.sh
 ```
@@ -114,7 +109,7 @@ When you run `bash run_ORCH.sh` from `crew-algorithms`, outputs are saved in the
 **Experiment console logs** are saved separately for each model, mission, and seed:
 
 ```text
-crew-algorithms/experiment_logs/<MODEL>/ORCH/<LEVEL>/seed<SEED>.log
+crew-algorithms/experiment_logs/<MODEL_BASENAME>/ORCH/<LEVEL>/seed<SEED>.log
 ```
 
 These files capture standard output and errors, including the run configuration and completion or failure status. Start here when checking progress or troubleshooting a run. Running the same model, mission, and seed again overwrites its console log.
@@ -122,10 +117,10 @@ These files capture standard output and errors, including the run configuration 
 **Results and detailed agent logs** are saved in a timestamped directory for each run:
 
 ```text
-crew-algorithms/crew_algorithms/wildfire_alg/results/logs/ORCH/<MODEL>/<TEAM_GENERATION_TYPE>/<LEVEL>/<SEED>/<TIMESTAMP>/
+crew-algorithms/crew_algorithms/wildfire_alg/results/logs/ORCH/<MODEL_BASENAME>/<TEAM_GENERATION_TYPE>/<LEVEL>/<SEED>/<TIMESTAMP>/
 ```
 
-For `run_ORCH.sh`, `<TEAM_GENERATION_TYPE>` is `preset` because the script supplies a team configuration. `<TIMESTAMP>` uses the format `YYYY-MM-DD-HH-MM-SS`.
+`<MODEL_BASENAME>` is the portion after the final `/` in the exact model ID. For example, `Qwen/Qwen3.8-Flash-Next-NVFP4` uses `Qwen3.8-Flash-Next-NVFP4`. For `run_ORCH.sh`, `<TEAM_GENERATION_TYPE>` is `preset` because the script supplies a team configuration. `<TIMESTAMP>` uses the format `YYYY-MM-DD-HH-MM-SS`.
 
 | File within the run directory | Contents |
 | --- | --- |
@@ -134,7 +129,7 @@ For `run_ORCH.sh`, `<TEAM_GENERATION_TYPE>` is `preset` because the script suppl
 | `master_logs/master_log_*.json` | Structured version of the master event log for analysis. |
 | `Agent_<ID>/chats.txt` | Individual agent conversation logs, written as messages are recorded. |
 
-For example, a `gpt` run of `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/gpt/ORCH/Scout_Fire_small/seed4651.log` and its results under `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/ORCH/gpt/preset/Scout_Fire_small/4651/<TIMESTAMP>/`.
+For example, an `Inferact/Qwen3.8-Flash-Next-NVFP4` run of `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/Qwen3.8-Flash-Next-NVFP4/ORCH/Scout_Fire_small/seed4651.log` and its results under `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/ORCH/Qwen3.8-Flash-Next-NVFP4/preset/Scout_Fire_small/4651/<TIMESTAMP>/`.
 
 
 ### Baseline Results
@@ -144,7 +139,7 @@ When you run `bash run_algorithm_baseline.sh` from `crew-algorithms`, outputs ar
 **Experiment console logs:**
 
 ```text
-crew-algorithms/experiment_logs/<MODEL>/<ALGO>/<LEVEL>/seed<SEED>.log
+crew-algorithms/experiment_logs/<MODEL_BASENAME>/<ALGO>/<LEVEL>/seed<SEED>.log
 ```
 
 Check these files for progress, errors, and completion or failure status. Running the same algorithm, model, mission, and seed again overwrites its console log.
@@ -152,12 +147,12 @@ Check these files for progress, errors, and completion or failure status. Runnin
 **Results:**
 
 ```text
-crew-algorithms/crew_algorithms/wildfire_alg/results/logs/<ALGO>/<MODEL>/<LEVEL>/<SEED>/<TIMESTAMP>/
+crew-algorithms/crew_algorithms/wildfire_alg/results/logs/<ALGO>/<MODEL_BASENAME>/<LEVEL>/<SEED>/<TIMESTAMP>/
 ```
 
-Each run directory contains a `data.csv` file with per-timestep mission metrics. `<TIMESTAMP>` uses the format `YYYY-MM-DD-HH-MM-SS`. Baseline result paths do not include a `<TEAM_GENERATION_TYPE>` directory.
+Each run directory contains a `data.csv` file with per-timestep mission metrics. `<MODEL_BASENAME>` follows the same final-component rule described above, and `<TIMESTAMP>` uses the format `YYYY-MM-DD-HH-MM-SS`. Baseline result paths do not include a `<TEAM_GENERATION_TYPE>` directory.
 
-For example, a `CAMON` baseline run using `gpt` on `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/gpt/CAMON/Scout_Fire_small/seed4651.log` and its metrics to `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/CAMON/gpt/Scout_Fire_small/4651/<TIMESTAMP>/data.csv`.
+For example, a `CAMON` run using `Inferact/Qwen3.8-Flash-Next-NVFP4` on `Scout_Fire_small` with seed `4651` writes its console log to `crew-algorithms/experiment_logs/Qwen3.8-Flash-Next-NVFP4/CAMON/Scout_Fire_small/seed4651.log` and its metrics to `crew-algorithms/crew_algorithms/wildfire_alg/results/logs/CAMON/Qwen3.8-Flash-Next-NVFP4/Scout_Fire_small/4651/<TIMESTAMP>/data.csv`.
 
 # Result
 ![ORCH_Result](assets/Aggregated%20Result%20by%20Algorithm.png)

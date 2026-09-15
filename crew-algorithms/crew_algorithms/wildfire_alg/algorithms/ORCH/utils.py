@@ -6,6 +6,7 @@ import os
 import threading
 import asyncio
 from typing import Dict, List, Any
+from crew_algorithms.wildfire_alg.config.configs import model_directory_name
 
 
 def _get_llm_model(cfg) -> str:
@@ -62,7 +63,7 @@ def _pre_generated_team_config_path(cfg, level: str) -> str:
     root = getattr(envs, "pre_generated_team_config_root", "") or _default_pre_generated_root()
     critic_dir = "critic" if getattr(cfg.llms, "use_structure_critic", True) else "no_critic"
     variant = _pre_generated_variant(cfg) if critic_dir == "critic" else "both"
-    return os.path.join(root, _get_llm_model(cfg), critic_dir, variant, f"{level}.json")
+    return os.path.join(root, model_directory_name(cfg), critic_dir, variant, f"{level}.json")
 
 def team_config_to_graph(team_config: dict, worker_count: int) -> tuple[list[list[int]], list[tuple[int, str]]]:
     """Convert saved team_config JSON into graph and agent_types."""

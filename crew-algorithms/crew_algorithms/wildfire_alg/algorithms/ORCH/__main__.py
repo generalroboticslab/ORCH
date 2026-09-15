@@ -2,7 +2,7 @@
 import hydra
 from attrs import define
 from crew_algorithms.envs.configs import EnvironmentConfig, register_env_configs
-from crew_algorithms.wildfire_alg.config.configs import LLMConfig, QwenLLMConfig, DeepseekLLMConfig, GemmaLLMConfig, GlmLLMConfig, LlamaLLMConfig, ErnieLLMConfig, NemotronLLMConfig, MinimaxLLMConfig, KimiLLMConfig
+from crew_algorithms.wildfire_alg.config.configs import LLMConfig, configure_model, model_directory_name
 from crew_algorithms.utils.wandb_utils import WandbConfig
 from crew_algorithms.wildfire_alg.config.build_config import update_config, create_level_presets, EVENT_ACTION_MAP
 from hydra.core.config_store import ConfigStore
@@ -386,33 +386,22 @@ async def async_wildfire_alg(cfg: Config):
     os.environ["SSL_CERT_FILE"] = certifi.where()
 
     llm_model = cfg.envs.llm_model
-    allowed = ("gpt", "qwen", "deepseek", "gemma", "glm", "llama", "ernie", "nemotron","minimax","kimi")
-    if llm_model not in allowed:
-        raise ValueError(f"Unsupported llm_model '{llm_model}'. Supported: {allowed}")
+    model_name = configure_model(cfg)
 
-    # If using Qwen, apply Qwen defaults to cfg.llms
-    if llm_model != "gpt":
-        gcfg = eval(f"{llm_model.capitalize()}LLMConfig()")
-        cfg.llms.actor_model = gcfg.actor_model
-        cfg.llms.critic_model = gcfg.critic_model
-        cfg.llms.planner_model = gcfg.planner_model
-        cfg.llms.translator_model = gcfg.translator_model
-        cfg.llms.large_model = gcfg.large_model
-        cfg.llms.small_model = gcfg.small_model
-        cfg.llms.reasoning_model = gcfg.reasoning_model
-
-    # API key selection: explicit config -> provider-specific env var -> OPENAI_API_KEY
+    # Local OpenAI-compatible servers often require the SDK's api_key argument
+    # but do not authenticate it, so use a harmless placeholder when blank.
     if llm_model == "gpt":
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("ORCH_API_KEY") or cfg.envs.api_key or os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("API_KEY or OPENAI_API_KEY is required for the OpenAI API")
     else:
-        api_key = os.getenv(f"{llm_model.upper()}_API_KEY","ernie-123")
-    model_name = cfg.llms.small_model 
+        api_key = os.getenv("ORCH_API_KEY") or cfg.envs.api_key or "EMPTY"
     
     os.environ["OPENAI_API_BASE"] = cfg.envs.llm_url
 
     # team_generation_type already computed above (before make_env)
 
-    path = os.path.join("crew_algorithms", "wildfire_alg", "results", "logs", "ORCH", llm_model, team_generation_type, level, str(seed), cfg.envs.timestamp)
+    path = os.path.join("crew_algorithms", "wildfire_alg", "results", "logs", "ORCH", model_directory_name(cfg), team_generation_type, level, str(seed), cfg.envs.timestamp)
     os.makedirs(path, exist_ok=True)
     
     # Initialize master logger

@@ -264,7 +264,13 @@ class WildfireConfig(EnvironmentConfig):
     scheduled_events: list = []
 
     llm_model: str = "gpt"
+    # Exact model ID sent to the OpenAI-compatible API. When omitted, the
+    # legacy llm_model family alias selects the model.
+    model_name: str = ""
     llm_url: str = "https://api.openai.com/v1"
+    # Optional API key for the configured endpoint. Local servers commonly do
+    # not validate it; clients receive a harmless placeholder when blank.
+    api_key: str = ""
     
     manager_type: str = "both"
     as_pre_generated: bool = False

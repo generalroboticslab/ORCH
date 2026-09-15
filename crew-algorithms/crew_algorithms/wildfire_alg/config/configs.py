@@ -1,5 +1,50 @@
 from attrs import define    
 
+
+def configure_model(cfg):
+    """Apply either an exact API model ID or a legacy model-family preset."""
+    exact_name = getattr(cfg.envs, "model_name", "")
+    if exact_name:
+        for field in (
+            "actor_model", "critic_model", "planner_model", "translator_model",
+            "large_model", "small_model", "reasoning_model",
+        ):
+            setattr(cfg.llms, field, exact_name)
+        return exact_name
+
+    presets = {
+        "gpt": LLMConfig,
+        "qwen": QwenLLMConfig,
+        "deepseek": DeepseekLLMConfig,
+        "gemma": GemmaLLMConfig,
+        "glm": GlmLLMConfig,
+        "llama": LlamaLLMConfig,
+        "ernie": ErnieLLMConfig,
+        "nemotron": NemotronLLMConfig,
+        "minimax": MinimaxLLMConfig,
+        "kimi": KimiLLMConfig,
+    }
+    family = cfg.envs.llm_model.lower()
+    if family not in presets:
+        raise ValueError(
+            f"Unknown legacy llm_model alias '{cfg.envs.llm_model}'. "
+            "Set envs.model_name to use an exact model ID."
+        )
+    selected = presets[family]()
+    for field in (
+        "actor_model", "critic_model", "planner_model", "translator_model",
+        "large_model", "small_model", "reasoning_model",
+    ):
+        setattr(cfg.llms, field, getattr(selected, field))
+    return cfg.llms.small_model
+
+
+def model_directory_name(cfg):
+    """Return the final component of an exact model ID for saved artifacts."""
+    exact_name = getattr(cfg.envs, "model_name", "")
+    model_name = exact_name or cfg.envs.llm_model
+    return model_name.rstrip("/").rsplit("/", 1)[-1]
+
 @define(auto_attribs=True)
 
 class Kimi1LLMConfig:
@@ -293,6 +338,3 @@ class LLMConfig:
     # Team structure generation LLM parameters
     structure_generator_temperature: float = 0.0
     use_structure_critic: bool = True
-
-
-

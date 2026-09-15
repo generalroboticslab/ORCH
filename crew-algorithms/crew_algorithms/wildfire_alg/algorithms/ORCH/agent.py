@@ -23,6 +23,11 @@ def _get_llm_url(cfg):
 
 
 def _get_model_name(cfg, depth: ModelDepth = "low") -> str:
+    envs = getattr(cfg, "envs", cfg)
+    explicit_model = getattr(envs, "model_name", None)
+    if explicit_model:
+        return explicit_model
+
     model_map = {
         "gpt": {
             "high": "gpt-5.4",
@@ -318,7 +323,6 @@ class Agent:
                 )
             
             else:
-                print(self.api_key)
                 self.async_client = AsyncOpenAI(
                     api_key=self.api_key,
                     base_url=_get_llm_url(self.cfg),
