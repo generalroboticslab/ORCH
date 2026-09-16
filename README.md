@@ -11,7 +11,7 @@
 
 Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
-# Run it on web-interface with AWS:
+# Run it on Web-Interface with AWS:
 
 Refer to this repo [Wildfire-ORCH](https://github.com/generalroboticslab/WILDFIRE-ORCH).
 
