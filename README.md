@@ -11,6 +11,10 @@
 
 Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
+# Run it on web-interface with AWS:
+
+Refer to this repo [Wildfire-ORCH](https://github.com/generalroboticslab/WILDFIRE-ORCH).
+
 # Get Started
 
 We currently only support Linux machine to run the experiment.
