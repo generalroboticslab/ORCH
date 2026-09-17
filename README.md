@@ -13,15 +13,15 @@ Duke University, [General Robotics Lab](http://generalroboticslab.com/)
 
 # Result from the paper
 
-The data from all the experiments in the paper are uploaded to [Huggingface](https://huggingface.co/datasets/jzr897328373/ORCH-dataset).
+The data from all the experiments in the paper are uploaded to [Hugging Face](https://huggingface.co/datasets/GeneralRoboticsLab/ORCH-dataset).
 
-# Run it on Web-Interface with AWS:
+# Run it on Web Interface with AWS:
 
 Refer to this repo [Wildfire-ORCH](https://github.com/generalroboticslab/WILDFIRE-ORCH).
 
 # Get Started
 
-We currently only support Linux machine to run the experiment.
+We currently only support Linux machines to run the experiment.
 
 ## 1. Clone this repo
 
