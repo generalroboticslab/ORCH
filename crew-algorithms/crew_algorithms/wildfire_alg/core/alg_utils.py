@@ -478,14 +478,9 @@ def generate_action_from_option(agent):
     action = agent.action_queue.pop(0)
     
     # Handle completion of option
-    #if action.done:
-
-        #agent.past_options.append(current_option)
-        #agent.options.pop(0)
-
-        # Generate next action if there are more options
-        #if len(agent.options) > 0:
-            #return generate_action_from_option(agent)
+    if action.done:
+        agent.past_options.append(current_option)
+        agent.options.pop(0)
 
     
     # Format the action as [action_type, x, y]
@@ -540,22 +535,15 @@ def check_if_option_done(agent):
         else:
             raise ValueError(f"No action library defined for agent type {agent.type}")
     
-    # Get next action from queue
-    try:
-        action = agent.action_queue.pop(0)
-    except:
+    # Peek at the first queued action without consuming it.
+    # The action itself is executed (and popped) by generate_action_from_option()
+    # later in the same timestep; consuming it here would drop one action per
+    # step and prevent multi-action options (e.g. cutting N trees) from ever
+    # reaching their terminating done=True action.
+    if len(agent.action_queue) == 0:
         return False
-    
-    # Handle completion of option
-    if action.done:
-
-        agent.past_options.append(current_option)
-        agent.options.pop(0)
-
-        return True
-
-    
-    return False
+    action = agent.action_queue[0]
+    return bool(action.done)
 
 def check_game_done(global_data, cfg, past_score):
     """
